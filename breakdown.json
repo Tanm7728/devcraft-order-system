@@ -1,0 +1,1762 @@
+{
+  "summary": {
+    "field_accuracy": 0.8179515379701138,
+    "date_accuracy": 1.0,
+    "clarification_accuracy": 0.932,
+    "test_a": 0.8771709227820682,
+    "scored": 250,
+    "missing": []
+  },
+  "per_message": [
+    {
+      "field_accuracy": 0.9090909090909091,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9454545454545453,
+      "id": "train-0001"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0002"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0003"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0004"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0005"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0006"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0007"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0008"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6571428571428571,
+      "id": "train-0009"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0010"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0011"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0012"
+    },
+    {
+      "field_accuracy": 0.7142857142857143,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8285714285714285,
+      "id": "train-0013"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0014"
+    },
+    {
+      "field_accuracy": 0.6,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.76,
+      "id": "train-0015"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0016"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8666666666666667,
+      "id": "train-0017"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0018"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0019"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0020"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0021"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0022"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0023"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0024"
+    },
+    {
+      "field_accuracy": 0.9090909090909091,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9454545454545453,
+      "id": "train-0025"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0026"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0027"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0028"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0029"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0030"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0031"
+    },
+    {
+      "field_accuracy": 0.4444444444444444,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6666666666666667,
+      "id": "train-0032"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0033"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0034"
+    },
+    {
+      "field_accuracy": 0.5833333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.75,
+      "id": "train-0035"
+    },
+    {
+      "field_accuracy": 0.5454545454545454,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5272727272727272,
+      "id": "train-0036"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0037"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0038"
+    },
+    {
+      "field_accuracy": 0.6363636363636364,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5818181818181818,
+      "id": "train-0039"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0040"
+    },
+    {
+      "field_accuracy": 0.4,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.64,
+      "id": "train-0041"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0042"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0043"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0044"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0045"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0046"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0047"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.45714285714285713,
+      "id": "train-0048"
+    },
+    {
+      "field_accuracy": 0.6,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.76,
+      "id": "train-0049"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0050"
+    },
+    {
+      "field_accuracy": 0.2777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.5666666666666667,
+      "id": "train-0051"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0052"
+    },
+    {
+      "field_accuracy": 0.5625,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5375,
+      "id": "train-0053"
+    },
+    {
+      "field_accuracy": 0.4,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.64,
+      "id": "train-0054"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0055"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0056"
+    },
+    {
+      "field_accuracy": 0.45454545454545453,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6727272727272727,
+      "id": "train-0057"
+    },
+    {
+      "field_accuracy": 0.6923076923076923,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8153846153846154,
+      "id": "train-0058"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0059"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0060"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0061"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0062"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0063"
+    },
+    {
+      "field_accuracy": 0.625,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7749999999999999,
+      "id": "train-0064"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0065"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0066"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0067"
+    },
+    {
+      "field_accuracy": 0.8888888888888888,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9333333333333333,
+      "id": "train-0068"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0069"
+    },
+    {
+      "field_accuracy": 0.6,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.56,
+      "id": "train-0070"
+    },
+    {
+      "field_accuracy": 0.5555555555555556,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7333333333333334,
+      "id": "train-0071"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.7142857142857142,
+      "id": "train-0072"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0073"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0074"
+    },
+    {
+      "field_accuracy": 0.9285714285714286,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.7571428571428571,
+      "id": "train-0075"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0076"
+    },
+    {
+      "field_accuracy": 0.9090909090909091,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9454545454545453,
+      "id": "train-0077"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0078"
+    },
+    {
+      "field_accuracy": 0.38461538461538464,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6307692307692307,
+      "id": "train-0079"
+    },
+    {
+      "field_accuracy": 0.6,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.76,
+      "id": "train-0080"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0081"
+    },
+    {
+      "field_accuracy": 0.3,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.5800000000000001,
+      "id": "train-0082"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0083"
+    },
+    {
+      "field_accuracy": 0.4666666666666667,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6799999999999999,
+      "id": "train-0084"
+    },
+    {
+      "field_accuracy": 0.8461538461538461,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9076923076923076,
+      "id": "train-0085"
+    },
+    {
+      "field_accuracy": 0.7142857142857143,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8285714285714285,
+      "id": "train-0086"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0087"
+    },
+    {
+      "field_accuracy": 0.7272727272727273,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8363636363636364,
+      "id": "train-0088"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0089"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0090"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0091"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0092"
+    },
+    {
+      "field_accuracy": 0.8,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8799999999999999,
+      "id": "train-0093"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0094"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8666666666666667,
+      "id": "train-0095"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0096"
+    },
+    {
+      "field_accuracy": 0.5333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.72,
+      "id": "train-0097"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0098"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0099"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0100"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0101"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0102"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0103"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0104"
+    },
+    {
+      "field_accuracy": 0.47058823529411764,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6823529411764706,
+      "id": "train-0105"
+    },
+    {
+      "field_accuracy": 0.3,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.5800000000000001,
+      "id": "train-0106"
+    },
+    {
+      "field_accuracy": 0.45454545454545453,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6727272727272727,
+      "id": "train-0107"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0108"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.8,
+      "id": "train-0109"
+    },
+    {
+      "field_accuracy": 0.5454545454545454,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7272727272727273,
+      "id": "train-0110"
+    },
+    {
+      "field_accuracy": 0.7142857142857143,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8285714285714285,
+      "id": "train-0111"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6571428571428571,
+      "id": "train-0112"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0113"
+    },
+    {
+      "field_accuracy": 0.9230769230769231,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9538461538461538,
+      "id": "train-0114"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0115"
+    },
+    {
+      "field_accuracy": 0.8461538461538461,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9076923076923076,
+      "id": "train-0116"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0117"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0118"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0119"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0120"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0121"
+    },
+    {
+      "field_accuracy": 0.8461538461538461,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9076923076923076,
+      "id": "train-0122"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0123"
+    },
+    {
+      "field_accuracy": 0.5882352941176471,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7529411764705882,
+      "id": "train-0124"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0125"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0126"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0127"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0128"
+    },
+    {
+      "field_accuracy": 0.4166666666666667,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.65,
+      "id": "train-0129"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0130"
+    },
+    {
+      "field_accuracy": 0.3333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6000000000000001,
+      "id": "train-0131"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.6666666666666667,
+      "id": "train-0132"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0133"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0134"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0135"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0136"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0137"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0138"
+    },
+    {
+      "field_accuracy": 0.8,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8799999999999999,
+      "id": "train-0139"
+    },
+    {
+      "field_accuracy": 0.9166666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.95,
+      "id": "train-0140"
+    },
+    {
+      "field_accuracy": 0.7142857142857143,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8285714285714285,
+      "id": "train-0141"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0142"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.45714285714285713,
+      "id": "train-0143"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0144"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0145"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0146"
+    },
+    {
+      "field_accuracy": 0.42105263157894735,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6526315789473685,
+      "id": "train-0147"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0148"
+    },
+    {
+      "field_accuracy": 0.3,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.5800000000000001,
+      "id": "train-0149"
+    },
+    {
+      "field_accuracy": 0.8888888888888888,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9333333333333333,
+      "id": "train-0150"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0151"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0152"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0153"
+    },
+    {
+      "field_accuracy": 0.3333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6000000000000001,
+      "id": "train-0154"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0155"
+    },
+    {
+      "field_accuracy": 0.9166666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.95,
+      "id": "train-0156"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0157"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0158"
+    },
+    {
+      "field_accuracy": 0.9333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.96,
+      "id": "train-0159"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7,
+      "id": "train-0160"
+    },
+    {
+      "field_accuracy": 0.6,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.56,
+      "id": "train-0161"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0162"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0163"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0164"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0165"
+    },
+    {
+      "field_accuracy": 0.9,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.94,
+      "id": "train-0166"
+    },
+    {
+      "field_accuracy": 0.4166666666666667,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.65,
+      "id": "train-0167"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.7142857142857142,
+      "id": "train-0168"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0169"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0170"
+    },
+    {
+      "field_accuracy": 0.7142857142857143,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8285714285714285,
+      "id": "train-0171"
+    },
+    {
+      "field_accuracy": 0.6428571428571429,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5857142857142857,
+      "id": "train-0172"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0173"
+    },
+    {
+      "field_accuracy": 0.6923076923076923,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8153846153846154,
+      "id": "train-0174"
+    },
+    {
+      "field_accuracy": 0.8333333333333334,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8999999999999999,
+      "id": "train-0175"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0176"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0177"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0178"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0179"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0180"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0181"
+    },
+    {
+      "field_accuracy": 0.6666666666666666,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8,
+      "id": "train-0182"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0183"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0184"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0185"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0186"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0187"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8666666666666667,
+      "id": "train-0188"
+    },
+    {
+      "field_accuracy": 0.3333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6000000000000001,
+      "id": "train-0189"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0190"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0191"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0192"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0193"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6571428571428571,
+      "id": "train-0194"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0195"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0196"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0197"
+    },
+    {
+      "field_accuracy": 0.375,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.425,
+      "id": "train-0198"
+    },
+    {
+      "field_accuracy": 0.35294117647058826,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.611764705882353,
+      "id": "train-0199"
+    },
+    {
+      "field_accuracy": 0.9333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.96,
+      "id": "train-0200"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0201"
+    },
+    {
+      "field_accuracy": 0.6153846153846154,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7692307692307692,
+      "id": "train-0202"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0203"
+    },
+    {
+      "field_accuracy": 0.8,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8799999999999999,
+      "id": "train-0204"
+    },
+    {
+      "field_accuracy": 0.8,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8799999999999999,
+      "id": "train-0205"
+    },
+    {
+      "field_accuracy": 0.42857142857142855,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6571428571428571,
+      "id": "train-0206"
+    },
+    {
+      "field_accuracy": 0.3,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.5800000000000001,
+      "id": "train-0207"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0208"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0209"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0210"
+    },
+    {
+      "field_accuracy": 0.7333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8399999999999999,
+      "id": "train-0211"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0212"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0213"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0214"
+    },
+    {
+      "field_accuracy": 0.7692307692307693,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8615384615384616,
+      "id": "train-0215"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0216"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.8,
+      "id": "train-0217"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0218"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0219"
+    },
+    {
+      "field_accuracy": 0.8,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8799999999999999,
+      "id": "train-0220"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0221"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0222"
+    },
+    {
+      "field_accuracy": 0.9285714285714286,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9571428571428571,
+      "id": "train-0223"
+    },
+    {
+      "field_accuracy": 0.75,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8499999999999999,
+      "id": "train-0224"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0225"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0226"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0227"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0228"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8666666666666667,
+      "id": "train-0229"
+    },
+    {
+      "field_accuracy": 0.8125,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8875,
+      "id": "train-0230"
+    },
+    {
+      "field_accuracy": 0.3333333333333333,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6000000000000001,
+      "id": "train-0231"
+    },
+    {
+      "field_accuracy": 0.5555555555555556,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7333333333333334,
+      "id": "train-0232"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0233"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5,
+      "id": "train-0234"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0235"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0236"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0237"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0238"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0239"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0240"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0241"
+    },
+    {
+      "field_accuracy": 0.8181818181818182,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8909090909090909,
+      "id": "train-0242"
+    },
+    {
+      "field_accuracy": 0.875,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.925,
+      "id": "train-0243"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0244"
+    },
+    {
+      "field_accuracy": 0.45454545454545453,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.6727272727272727,
+      "id": "train-0245"
+    },
+    {
+      "field_accuracy": 0.8571428571428571,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.9142857142857141,
+      "id": "train-0246"
+    },
+    {
+      "field_accuracy": 0.5,
+      "date_hit": true,
+      "clarification_hit": false,
+      "total": 0.5,
+      "id": "train-0247"
+    },
+    {
+      "field_accuracy": 0.7777777777777778,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.8666666666666667,
+      "id": "train-0248"
+    },
+    {
+      "field_accuracy": 0.5454545454545454,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 0.7272727272727273,
+      "id": "train-0249"
+    },
+    {
+      "field_accuracy": 1.0,
+      "date_hit": true,
+      "clarification_hit": true,
+      "total": 1.0,
+      "id": "train-0250"
+    }
+  ]
+}
