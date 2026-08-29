@@ -9,7 +9,7 @@ export default function OrdersTable({
   onSelectCustomer,
   selectedDomain,
 }) {
-  const [viewMode, setViewMode] = useState('table'); // 'table' | 'kanban'
+  const [viewMode, setViewMode] = useState('table');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [overdueOnly, setOverdueOnly] = useState(false);
@@ -17,22 +17,11 @@ export default function OrdersTable({
 
   const today = getTodayKolkataDate();
 
-  const domainIcons = {
-    tailor: '🧵',
-    tiffin: '🍱',
-    electrician: '⚡',
-    baker: '🎂',
-    general: '📦',
-  };
+  const domainIcons = { tailor: '🧵', tiffin: '🍱', electrician: '⚡', baker: '🎂', general: '📦', custom: '📦' };
 
-  // Filter orders
   const filteredOrders = orders.filter((ord) => {
-    if (selectedDomain && selectedDomain !== 'all' && ord.domain !== selectedDomain) {
-      return false;
-    }
-    if (statusFilter !== 'all' && ord.status !== statusFilter) {
-      return false;
-    }
+    if (selectedDomain && selectedDomain !== 'all' && ord.domain !== selectedDomain) return false;
+    if (statusFilter !== 'all' && ord.status !== statusFilter) return false;
     if (overdueOnly) {
       if (ord.status === 'Completed' || ord.status === 'Paid') return false;
       if (!ord.due_date || ord.due_date >= today) return false;
@@ -48,231 +37,146 @@ export default function OrdersTable({
     return true;
   });
 
-  const getDueDateBadge = (dueDate, status) => {
-    if (!dueDate) {
-      return (
-        <span className="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-100 text-slate-500 font-medium">
-          No date
-        </span>
-      );
-    }
-
-    if (status === 'Completed' || status === 'Paid') {
-      return (
-        <span className="px-2.5 py-0.5 rounded-md text-[11px] bg-slate-100 text-slate-600 font-mono font-medium">
-          {dueDate}
-        </span>
-      );
-    }
-
-    if (dueDate < today) {
-      return (
-        <span className="px-2.5 py-0.5 rounded-md text-[11px] bg-rose-50 text-rose-800 border border-rose-200 font-bold flex items-center space-x-1">
-          <span>⚠️</span>
-          <span>Overdue ({dueDate})</span>
-        </span>
-      );
-    }
-
-    if (dueDate === today) {
-      return (
-        <span className="px-2.5 py-0.5 rounded-md text-[11px] bg-amber-50 text-amber-800 border border-amber-300 font-bold flex items-center space-x-1">
-          <span>⏰</span>
-          <span>Today</span>
-        </span>
-      );
-    }
-
-    return (
-      <span className="px-2.5 py-0.5 rounded-md text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
-        📅 {dueDate}
-      </span>
-    );
+  const getDueBadge = (dueDate, status) => {
+    if (!dueDate) return <span className="text-slate-400">—</span>;
+    if (status === 'Completed' || status === 'Paid') return <span className="text-slate-500 font-mono">{dueDate}</span>;
+    if (dueDate < today) return <span className="text-red-600 font-medium font-mono">{dueDate}</span>;
+    if (dueDate === today) return <span className="text-amber-600 font-medium font-mono">{dueDate}</span>;
+    return <span className="text-slate-700 font-mono">{dueDate}</span>;
   };
 
   const kanbanStatuses = ['Pending', 'In Progress', 'Completed', 'Paid'];
 
   return (
-    <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
-      
-      {/* Control Bar: Search, Filters & View Toggle */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-200">
-        
-        {/* Left: Search & Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Search Input */}
-          <div className="relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search customer, item, ID..."
-              className="bg-slate-50 border border-slate-300 focus:bg-white focus:border-amber-500 rounded-xl pl-8.5 pr-3 py-1.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none w-48 sm:w-60 shadow-2xs"
-            />
-            <span className="absolute left-2.5 top-2 text-xs text-slate-400">🔍</span>
-          </div>
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
 
-          {/* Status Filters */}
-          <div className="flex items-center space-x-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+      {/* Control Bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4 border-b border-slate-100">
+
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Search */}
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search…"
+            className="bg-slate-50 border border-slate-200 focus:border-slate-400 rounded-lg pl-3 pr-3 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none w-40 sm:w-52 transition"
+          />
+
+          {/* Status pills */}
+          <div className="flex items-center gap-0.5 text-xs">
             {['all', 'Pending', 'In Progress', 'Completed', 'Paid'].map((st) => (
               <button
                 key={st}
                 onClick={() => setStatusFilter(st)}
-                className={`px-2.5 py-1 rounded-lg font-bold transition cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md transition cursor-pointer ${
                   statusFilter === st
-                    ? 'bg-white text-slate-900 shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
                 }`}
               >
-                {st === 'all' ? 'All Status' : st}
+                {st === 'all' ? 'All' : st}
               </button>
             ))}
           </div>
 
-          {/* Overdue Only Filter */}
+          {/* Overdue toggle */}
           <button
             onClick={() => setOverdueOnly(!overdueOnly)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition border flex items-center space-x-1 cursor-pointer shadow-2xs ${
-              overdueOnly
-                ? 'bg-rose-600 text-white border-rose-600'
-                : 'bg-slate-50 text-slate-600 border-slate-300 hover:bg-slate-100'
+            className={`px-2.5 py-1 rounded-md text-xs transition cursor-pointer ${
+              overdueOnly ? 'bg-red-600 text-white' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
             }`}
           >
-            <span>⚠️ Overdue Only</span>
+            Overdue
           </button>
         </div>
 
-        {/* Right: View Mode Toggle & Count */}
-        <div className="flex items-center space-x-3 self-end md:self-auto">
-          <span className="text-xs text-slate-500 font-medium">
-            Showing <strong className="text-slate-800 font-bold">{filteredOrders.length}</strong> orders
-          </span>
-
-          <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+        {/* Right: count + view toggle */}
+        <div className="flex items-center gap-3 text-xs">
+          <span className="text-slate-400">{filteredOrders.length} orders</span>
+          <div className="flex items-center bg-slate-100 rounded-lg p-0.5">
             <button
               onClick={() => setViewMode('table')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition cursor-pointer ${
-                viewMode === 'table' ? 'bg-white text-amber-700 shadow-2xs' : 'text-slate-600'
-              }`}
-              title="Table View"
+              className={`px-2 py-1 rounded-md transition cursor-pointer ${viewMode === 'table' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
             >
-              📋 Table
+              Table
             </button>
             <button
               onClick={() => setViewMode('kanban')}
-              className={`px-2.5 py-1 rounded-lg font-bold transition cursor-pointer ${
-                viewMode === 'kanban' ? 'bg-white text-amber-700 shadow-2xs' : 'text-slate-600'
-              }`}
-              title="Kanban View"
+              className={`px-2 py-1 rounded-md transition cursor-pointer ${viewMode === 'kanban' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
             >
-              🗂️ Kanban
+              Board
             </button>
           </div>
         </div>
 
       </div>
 
-      {/* Content Area */}
+      {/* Content */}
       {filteredOrders.length === 0 ? (
-        <div className="py-12 text-center text-slate-400">
-          <div className="text-4xl mb-2">📭</div>
-          <p className="text-sm font-bold text-slate-600">No orders found matching the current filters.</p>
-          <p className="text-xs mt-1 text-slate-400">Try adjusting your search query or domain filter.</p>
+        <div className="py-16 text-center">
+          <p className="text-sm text-slate-400">No orders match the current filters.</p>
         </div>
       ) : viewMode === 'table' ? (
-        /* TABLE VIEW */
-        <div className="overflow-x-auto mt-4">
-          <table className="w-full text-left text-xs border-collapse">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500 bg-slate-50/80 font-bold">
-                <th className="py-3 px-3">Order ID & Domain</th>
-                <th className="py-3 px-3">Customer</th>
-                <th className="py-3 px-3">Items & Attributes</th>
-                <th className="py-3 px-3">Due Date</th>
-                <th className="py-3 px-3">Amount & Payment</th>
-                <th className="py-3 px-3">Status</th>
-                <th className="py-3 px-3 text-right">Actions</th>
+              <tr className="border-b border-slate-100 text-[11px] uppercase tracking-wider text-slate-400">
+                <th className="py-3 px-4 font-medium">Order</th>
+                <th className="py-3 px-4 font-medium">Customer</th>
+                <th className="py-3 px-4 font-medium">Items</th>
+                <th className="py-3 px-4 font-medium">Due</th>
+                <th className="py-3 px-4 font-medium">Amount</th>
+                <th className="py-3 px-4 font-medium">Status</th>
+                <th className="py-3 px-4 font-medium text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-50">
               {filteredOrders.map((ord) => (
-                <tr key={ord.id} className="hover:bg-slate-50/90 transition group">
-                  
-                  {/* Order ID & Domain */}
-                  <td className="py-3.5 px-3">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg" title={ord.domain}>
-                        {domainIcons[ord.domain] || '📦'}
-                      </span>
-                      <div>
-                        <div className="font-mono font-bold text-slate-900">
-                          {ord.orderId}
-                        </div>
-                        <span className="text-[10px] uppercase tracking-wider font-extrabold text-slate-500">
-                          {ord.domain}
-                        </span>
-                      </div>
-                    </div>
+                <tr key={ord.id} className="hover:bg-slate-50/50 transition">
+
+                  {/* Order ID */}
+                  <td className="py-3 px-4">
+                    <span className="font-mono text-slate-700">{domainIcons[ord.domain] || '📦'} {ord.orderId}</span>
                   </td>
 
                   {/* Customer */}
-                  <td className="py-3.5 px-3">
+                  <td className="py-3 px-4">
                     <button
                       onClick={() => onSelectCustomer(ord.customer)}
-                      className="font-extrabold text-slate-900 hover:text-amber-600 hover:underline transition text-left cursor-pointer"
+                      className="text-slate-800 font-medium hover:text-slate-600 transition text-left cursor-pointer"
                     >
                       {ord.customer}
                     </button>
-                    {ord.needs_clarification && (
-                      <div className="text-[10px] text-amber-700 font-bold flex items-center space-x-1 mt-0.5">
-                        <span>⚠️ Needs Clarification</span>
-                      </div>
-                    )}
                   </td>
 
-                  {/* Items & Attributes */}
-                  <td className="py-3.5 px-3 max-w-xs">
-                    <div className="space-y-1">
+                  {/* Items */}
+                  <td className="py-3 px-4 max-w-xs">
+                    <div className="flex flex-wrap gap-1">
                       {(ord.items || []).map((it, iIdx) => (
-                        <div key={iIdx} className="flex flex-wrap items-center gap-1.5">
-                          <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-900 font-bold text-[10px] border border-slate-200">
-                            {it.quantity}x
-                          </span>
-                          <span className="font-bold text-slate-800 capitalize">
-                            {it.description}
-                          </span>
-
-                          {/* Attributes */}
-                          {Object.entries(it.attributes || {}).map(([k, v]) => (
-                            <span
-                              key={k}
-                              className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[9px] font-mono border border-slate-200"
-                            >
-                              {k}: {String(v)}
-                            </span>
-                          ))}
-                        </div>
+                        <span key={iIdx} className="text-slate-600">
+                          {it.quantity}× <span className="capitalize">{it.description}</span>
+                          {iIdx < (ord.items || []).length - 1 && ','}
+                        </span>
                       ))}
                     </div>
                   </td>
 
-                  {/* Due Date */}
-                  <td className="py-3.5 px-3 whitespace-nowrap">
-                    {getDueDateBadge(ord.due_date, ord.status)}
+                  {/* Due */}
+                  <td className="py-3 px-4 whitespace-nowrap text-xs">
+                    {getDueBadge(ord.due_date, ord.status)}
                   </td>
 
-                  {/* Amount & Payment */}
-                  <td className="py-3.5 px-3 whitespace-nowrap">
-                    <div className="flex items-center space-x-2">
-                      <span className="font-mono font-bold text-slate-900">
-                        {ord.amount ? `₹${ord.amount.toLocaleString('en-IN')}` : '—'}
-                      </span>
+                  {/* Amount */}
+                  <td className="py-3 px-4 whitespace-nowrap">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-slate-800">{ord.amount ? `₹${ord.amount.toLocaleString('en-IN')}` : '—'}</span>
                       <button
                         onClick={() => onTogglePaid(ord.id, !ord.paid)}
-                        className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition border cursor-pointer ${
+                        className={`text-[10px] px-1.5 py-0.5 rounded cursor-pointer transition ${
                           ord.paid || ord.status === 'Paid'
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                            : 'bg-rose-50 text-rose-800 border-rose-200 hover:bg-rose-100'
+                            ? 'text-emerald-700 bg-emerald-50'
+                            : 'text-slate-500 bg-slate-100 hover:bg-slate-200'
                         }`}
                       >
                         {ord.paid || ord.status === 'Paid' ? '✓ Paid' : 'Unpaid'}
@@ -280,18 +184,12 @@ export default function OrdersTable({
                     </div>
                   </td>
 
-                  {/* Status Dropdown */}
-                  <td className="py-3.5 px-3">
+                  {/* Status */}
+                  <td className="py-3 px-4">
                     <select
                       value={ord.status}
                       onChange={(e) => onUpdateStatus(ord.id, e.target.value)}
-                      className={`text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none border cursor-pointer ${
-                        ord.status === 'Completed' || ord.status === 'Paid'
-                          ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                          : ord.status === 'In Progress'
-                          ? 'bg-indigo-50 text-indigo-800 border-indigo-200'
-                          : 'bg-amber-50 text-amber-900 border-amber-200'
-                      }`}
+                      className="text-xs bg-transparent text-slate-700 focus:outline-none cursor-pointer"
                     >
                       <option value="Pending">Pending</option>
                       <option value="In Progress">In Progress</option>
@@ -301,22 +199,18 @@ export default function OrdersTable({
                   </td>
 
                   {/* Actions */}
-                  <td className="py-3.5 px-3 text-right">
-                    <div className="flex items-center justify-end space-x-1.5">
+                  <td className="py-3 px-4 text-right">
+                    <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={() => setSelectedOrderDetails(ord)}
-                        className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs transition cursor-pointer border border-slate-200"
-                        title="View Raw Message & Audit Log"
-                      >
-                        👁️
-                      </button>
+                        className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+                        title="View details"
+                      >👁️</button>
                       <button
                         onClick={() => onDeleteOrder(ord.id)}
-                        className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs transition cursor-pointer border border-rose-200"
-                        title="Delete Order"
-                      >
-                        🗑️
-                      </button>
+                        className="p-1 rounded text-slate-400 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
+                        title="Delete"
+                      >🗑️</button>
                     </div>
                   </td>
 
@@ -326,59 +220,38 @@ export default function OrdersTable({
           </table>
         </div>
       ) : (
-        /* KANBAN BOARD VIEW */
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+        /* KANBAN */
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 p-4">
           {kanbanStatuses.map((statusKey) => {
             const columnOrders = filteredOrders.filter((o) => o.status === statusKey);
             return (
-              <div
-                key={statusKey}
-                className="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col h-[520px]"
-              >
-                {/* Column Header */}
+              <div key={statusKey} className="bg-slate-50 rounded-lg p-3 flex flex-col h-[480px]">
                 <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
-                  <div className="flex items-center space-x-1.5">
-                    <span className="text-xs font-bold text-slate-800">{statusKey}</span>
-                    <span className="w-5 h-5 rounded-full bg-white text-slate-700 text-[10px] font-bold flex items-center justify-center border border-slate-200 shadow-2xs">
-                      {columnOrders.length}
-                    </span>
-                  </div>
+                  <span className="text-xs font-medium text-slate-600">{statusKey}</span>
+                  <span className="text-[10px] text-slate-400">{columnOrders.length}</span>
                 </div>
 
-                {/* Cards Container */}
-                <div className="flex-1 overflow-y-auto space-y-2.5 pr-1">
+                <div className="flex-1 overflow-y-auto space-y-2 pr-0.5">
                   {columnOrders.map((ord) => (
-                    <div
-                      key={ord.id}
-                      className="bg-white border border-slate-200 hover:border-slate-300 rounded-xl p-3 shadow-xs space-y-2 transition"
-                    >
+                    <div key={ord.id} className="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5 hover:shadow-sm transition">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-mono font-bold text-amber-700">
-                          {domainIcons[ord.domain]} {ord.orderId}
-                        </span>
-                        <span className="font-mono text-slate-900 font-bold">
-                          ₹{ord.amount || 0}
-                        </span>
+                        <span className="font-mono text-slate-500">{domainIcons[ord.domain]} {ord.orderId}</span>
+                        <span className="font-mono text-slate-800">{ord.amount ? `₹${ord.amount}` : ''}</span>
                       </div>
-
                       <div>
-                        <button
-                          onClick={() => onSelectCustomer(ord.customer)}
-                          className="text-xs font-bold text-slate-900 hover:text-amber-600 text-left cursor-pointer"
-                        >
+                        <button onClick={() => onSelectCustomer(ord.customer)} className="text-xs font-medium text-slate-800 hover:text-slate-600 text-left cursor-pointer">
                           {ord.customer}
                         </button>
-                        <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
-                          {(ord.items || []).map(i => `${i.quantity}x ${i.description}`).join(', ')}
+                        <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                          {(ord.items || []).map(i => `${i.quantity}× ${i.description}`).join(', ')}
                         </div>
                       </div>
-
-                      <div className="flex items-center justify-between pt-1.5 border-t border-slate-100 text-[10px]">
-                        {getDueDateBadge(ord.due_date, ord.status)}
+                      <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-[10px]">
+                        {getDueBadge(ord.due_date, ord.status)}
                         <select
                           value={ord.status}
                           onChange={(e) => onUpdateStatus(ord.id, e.target.value)}
-                          className="bg-slate-50 text-slate-700 text-[10px] rounded p-1 border border-slate-200 font-medium cursor-pointer"
+                          className="bg-transparent text-slate-500 text-[10px] focus:outline-none cursor-pointer"
                         >
                           <option value="Pending">Pending</option>
                           <option value="In Progress">In Progress</option>
@@ -395,66 +268,36 @@ export default function OrdersTable({
         </div>
       )}
 
-      {/* Raw Message & Order Details Modal */}
+      {/* Detail Modal */}
       {selectedOrderDetails && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-5 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-              <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2">
-                <span>{domainIcons[selectedOrderDetails.domain]}</span>
-                <span>Order Details ({selectedOrderDetails.orderId})</span>
-              </h3>
-              <button
-                onClick={() => setSelectedOrderDetails(null)}
-                className="text-slate-400 hover:text-slate-700 text-lg font-bold cursor-pointer"
-              >
-                ✕
-              </button>
+        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl max-w-lg w-full p-5 shadow-xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="text-sm font-semibold text-slate-900">{selectedOrderDetails.orderId}</h3>
+              <button onClick={() => setSelectedOrderDetails(null)} className="text-slate-400 hover:text-slate-700 cursor-pointer">✕</button>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-slate-500 font-bold block mb-1">Customer</label>
-                <div className="text-slate-900 font-bold bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-                  {selectedOrderDetails.customer}
+                <label className="text-slate-400 block mb-1">Customer</label>
+                <div className="text-slate-800 bg-slate-50 p-2.5 rounded-lg">{selectedOrderDetails.customer}</div>
+              </div>
+              <div>
+                <label className="text-slate-400 block mb-1">Original Message</label>
+                <div className="text-slate-700 bg-slate-50 p-3 rounded-lg whitespace-pre-wrap leading-relaxed">
+                  {selectedOrderDetails.raw_message || '—'}
                 </div>
               </div>
-
               <div>
-                <label className="text-slate-500 font-bold block mb-1">Original Raw Message</label>
-                <div className="text-slate-800 font-sans bg-slate-50 p-3 rounded-lg border border-slate-200 whitespace-pre-wrap leading-relaxed">
-                  {selectedOrderDetails.raw_message || '<No raw message recorded>'}
-                </div>
-              </div>
-
-              <div>
-                <label className="text-slate-500 font-bold block mb-1">Items & Attributes</label>
-                <pre className="text-slate-800 font-mono bg-slate-50 p-3 rounded-lg border border-slate-200 max-h-36 overflow-y-auto text-[11px]">
+                <label className="text-slate-400 block mb-1">Items</label>
+                <pre className="text-slate-700 font-mono bg-slate-50 p-3 rounded-lg max-h-36 overflow-y-auto text-[11px]">
                   {JSON.stringify(selectedOrderDetails.items, null, 2)}
                 </pre>
               </div>
-
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-slate-500 font-bold block mb-0.5">Created Date</label>
-                  <div className="text-slate-700 font-mono bg-slate-50 p-2 rounded-lg border border-slate-200">
-                    {selectedOrderDetails.created_at ? selectedOrderDetails.created_at.slice(0, 19).replace('T', ' ') : '—'}
-                  </div>
-                </div>
-                <div>
-                  <label className="text-slate-500 font-bold block mb-0.5">Confidence Score</label>
-                  <div className="text-amber-800 font-mono font-bold bg-amber-50 p-2 rounded-lg border border-amber-200">
-                    {Math.round((selectedOrderDetails.confidence || 0.8) * 100)}%
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <div className="flex justify-end pt-2 border-t border-slate-200">
-              <button
-                onClick={() => setSelectedOrderDetails(null)}
-                className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs cursor-pointer"
-              >
+            <div className="flex justify-end pt-2 border-t border-slate-100">
+              <button onClick={() => setSelectedOrderDetails(null)} className="px-4 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs cursor-pointer transition">
                 Close
               </button>
             </div>

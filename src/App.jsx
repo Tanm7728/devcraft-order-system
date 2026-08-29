@@ -24,14 +24,12 @@ export default function App() {
   const [selectedDomain, setSelectedDomain] = useState('all');
   const [toast, setToast] = useState(null);
 
-  // Operational Metrics
   const [metrics, setMetrics] = useState({
     dueAndOverdue: { todayDate: '', dueTodayCount: 0, overdueCount: 0, upcomingCount: 0 },
     receivables: { totalUnpaidAmount: 0, debtorCount: 0, debtors: [] },
     capacity: { totalItemsCommitted: 0, activeOrderCount: 0, maxCapacity: 35, utilizationPercent: 0, dailyBreakdown: {} },
   });
 
-  // Modals state
   const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
   const [isCustomerHistoryModalOpen, setIsCustomerHistoryModalOpen] = useState(false);
   const [historyCustomerName, setHistoryCustomerName] = useState('');
@@ -41,32 +39,24 @@ export default function App() {
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 3500);
+    setTimeout(() => setToast(null), 2500);
   };
 
-  // Fetch all orders & operational metrics from IndexedDB
   const refreshAllData = useCallback(async () => {
     try {
       const all = await getAllOrders();
       setOrders(all);
-
       const [dueOverdueRes, receivablesRes, capacityRes] = await Promise.all([
         getDueAndOverdueMetrics(),
         getUnpaidReceivablesMetrics(),
         getCommittedWeeklyCapacity(),
       ]);
-
-      setMetrics({
-        dueAndOverdue: dueOverdueRes,
-        receivables: receivablesRes,
-        capacity: capacityRes,
-      });
+      setMetrics({ dueAndOverdue: dueOverdueRes, receivables: receivablesRes, capacity: capacityRes });
     } catch (err) {
       console.error('Error fetching data from Dexie DB:', err);
     }
   }, []);
 
-  // Initialize and auto-seed if empty
   useEffect(() => {
     const init = async () => {
       await seedDemoDataset();
@@ -75,69 +65,59 @@ export default function App() {
     init();
   }, [refreshAllData]);
 
-  // Save new order from Quick Intake
   const handleSaveOrder = async (parsedData, rawMessage, domain) => {
     try {
       const saved = await createOrder(parsedData, rawMessage, domain);
       await refreshAllData();
-      showToast(`Order ${saved.orderId} saved locally in offline DB!`, 'success');
+      showToast(`Order ${saved.orderId} saved`);
     } catch (err) {
-      showToast(`Failed to save order: ${err.message}`, 'error');
+      showToast(`Save failed: ${err.message}`, 'error');
     }
   };
 
-  // Update order status
   const handleUpdateStatus = async (id, newStatus) => {
     try {
       await updateOrder(id, { status: newStatus });
       await refreshAllData();
-      showToast(`Order status updated to ${newStatus}`);
     } catch (err) {
-      showToast(`Failed to update status: ${err.message}`, 'error');
+      showToast(`Update failed: ${err.message}`, 'error');
     }
   };
 
-  // Toggle order payment
   const handleTogglePaid = async (id, isPaid) => {
     try {
       await updateOrder(id, { paid: isPaid, status: isPaid ? 'Paid' : 'Pending' });
       await refreshAllData();
-      showToast(isPaid ? 'Order marked as Paid!' : 'Order marked as Unpaid');
     } catch (err) {
-      showToast(`Failed to update payment: ${err.message}`, 'error');
+      showToast(`Update failed: ${err.message}`, 'error');
     }
   };
 
-  // Delete order
   const handleDeleteOrder = async (id) => {
-    if (window.confirm('Are you sure you want to delete this order?')) {
+    if (window.confirm('Delete this order?')) {
       try {
         await deleteOrder(id);
         await refreshAllData();
-        showToast('Order deleted from local database.');
       } catch (err) {
-        showToast(`Failed to delete: ${err.message}`, 'error');
+        showToast(`Delete failed: ${err.message}`, 'error');
       }
     }
   };
 
-  // Manual seed demo data
   const handleSeedData = async () => {
     await seedDemoDataset();
     await refreshAllData();
-    showToast('Demo dataset loaded successfully!');
+    showToast('Demo data loaded');
   };
 
-  // Open customer history lookup
   const handleOpenCustomerLookup = (custName = '') => {
     setHistoryCustomerName(custName);
     setIsCustomerHistoryModalOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
-      
-      {/* Top Navigation */}
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased">
+
       <Navbar
         selectedDomain={selectedDomain}
         setSelectedDomain={setSelectedDomain}
@@ -148,42 +128,29 @@ export default function App() {
         ordersCount={orders.length}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
-        {/* Toast Notification */}
+      <main className="flex-1 max-w-6xl w-full mx-auto px-5 sm:px-8 py-6">
+
+        {/* Toast */}
         {toast && (
-          <div className="fixed bottom-5 right-5 z-50 animate-bounce">
-            <div className={`px-4 py-3 rounded-xl shadow-xl text-xs font-bold flex items-center space-x-2 border ${
-              toast.type === 'success'
-                ? 'bg-emerald-50 text-emerald-900 border-emerald-300 shadow-emerald-500/10'
-                : 'bg-rose-50 text-rose-900 border-rose-300 shadow-rose-500/10'
+          <div className="fixed bottom-4 right-4 z-50">
+            <div className={`px-4 py-2.5 rounded-lg shadow-lg text-xs font-medium ${
+              toast.type === 'success' ? 'bg-slate-900 text-white' : 'bg-red-600 text-white'
             }`}>
-              <span>{toast.type === 'success' ? '✅' : '⚠️'}</span>
-              <span>{toast.message}</span>
+              {toast.message}
             </div>
           </div>
         )}
 
-        {/* 4 Operational Insights Cards */}
         <OperationalInsights
           metrics={metrics}
-          onFilterDueToday={() => {
-            showToast('Showing Due Today orders in table');
-          }}
-          onFilterOverdue={() => {
-            showToast('Showing Overdue orders in table');
-          }}
+          onFilterDueToday={() => showToast('Filtered: Due Today')}
+          onFilterOverdue={() => showToast('Filtered: Overdue')}
           onOpenCustomerLookup={() => handleOpenCustomerLookup('')}
           onOpenReceivablesModal={() => setIsReceivablesModalOpen(true)}
         />
 
-        {/* Universal Smart Intake Box & Real-Time Parser */}
-        <QuickIntake
-          onSaveOrder={handleSaveOrder}
-        />
+        <QuickIntake onSaveOrder={handleSaveOrder} />
 
-        {/* Orders Table & Kanban Board */}
         <OrdersTable
           orders={orders}
           selectedDomain={selectedDomain}
@@ -196,46 +163,16 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div>
-            ⚡ <strong className="text-slate-800">KaamFlow</strong> — Offline-First Intelligent Order Intake & Management for Micro-Enterprises
-          </div>
-          <div className="font-mono text-[11px] text-slate-500 font-semibold">
-            DevCraft Edition • 100% Deterministic Sync CRDT & Multi-Domain Dynamic Parsing
-          </div>
-        </div>
+      <footer className="border-t border-slate-100 bg-white py-3 text-center">
+        <p className="text-[11px] text-slate-400">KaamFlow · Offline-First Order Management</p>
       </footer>
 
-      {/* Interactive Modals */}
-      <ConflictModal
-        isOpen={isConflictModalOpen}
-        onClose={() => setIsConflictModalOpen(false)}
-      />
-
-      <CustomerHistoryModal
-        isOpen={isCustomerHistoryModalOpen}
-        onClose={() => setIsCustomerHistoryModalOpen(false)}
-        initialCustomer={historyCustomerName}
-      />
-
-      <ReceivablesModal
-        isOpen={isReceivablesModalOpen}
-        onClose={() => setIsReceivablesModalOpen(false)}
-        receivables={metrics.receivables}
-        onMarkPaid={handleTogglePaid}
-      />
-
-      <BackupModal
-        isOpen={isBackupModalOpen}
-        onClose={() => setIsBackupModalOpen(false)}
-        onRefreshData={refreshAllData}
-      />
-
-      <BusinessHealthModal
-        isOpen={isHealthModalOpen}
-        onClose={() => setIsHealthModalOpen(false)}
-      />
+      {/* Modals */}
+      <ConflictModal isOpen={isConflictModalOpen} onClose={() => setIsConflictModalOpen(false)} />
+      <CustomerHistoryModal isOpen={isCustomerHistoryModalOpen} onClose={() => setIsCustomerHistoryModalOpen(false)} initialCustomer={historyCustomerName} />
+      <ReceivablesModal isOpen={isReceivablesModalOpen} onClose={() => setIsReceivablesModalOpen(false)} receivables={metrics.receivables} onMarkPaid={handleTogglePaid} />
+      <BackupModal isOpen={isBackupModalOpen} onClose={() => setIsBackupModalOpen(false)} onRefreshData={refreshAllData} />
+      <BusinessHealthModal isOpen={isHealthModalOpen} onClose={() => setIsHealthModalOpen(false)} />
 
     </div>
   );
