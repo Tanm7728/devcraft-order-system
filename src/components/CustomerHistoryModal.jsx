@@ -21,27 +21,27 @@ export default function CustomerHistoryModal({ isOpen, onClose, initialCustomer 
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-[#141414] border border-white/[0.08] rounded-xl max-w-xl w-full p-6 shadow-2xl space-y-4 text-white">
         
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-          <div className="flex items-center space-x-2">
-            <span className="w-8 h-8 rounded-lg bg-sky-50 text-sky-700 border border-sky-200 flex items-center justify-center font-bold">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+          <div className="flex items-center space-x-2.5">
+            <span className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center font-bold text-sm">
               🔍
             </span>
             <div>
-              <h3 className="text-base font-black text-slate-900">
+              <h3 className="text-sm font-semibold text-white">
                 Customer Order History & Specifications
               </h3>
-              <p className="text-xs text-slate-500">
-                Operational Query 3: What did this customer order last time?
+              <p className="text-xs text-white/40">
+                Operational Query: What did this customer order last time?
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 text-lg font-bold cursor-pointer"
+            className="text-white/40 hover:text-white text-base cursor-pointer"
           >
             ✕
           </button>
@@ -54,53 +54,53 @@ export default function CustomerHistoryModal({ isOpen, onClose, initialCustomer 
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Type customer name (e.g. Ram, Pooja Verma, Amit Sharma)..."
-            className="w-full bg-slate-50 focus:bg-white border border-slate-300 focus:border-sky-500 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none shadow-2xs"
+            className="w-full bg-white/[0.04] border border-white/[0.08] focus:border-white/20 rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none transition"
           />
-          <span className="absolute left-3 top-3 text-xs text-slate-400">🔎</span>
+          <span className="absolute left-3 top-2.5 text-xs text-white/30">🔎</span>
         </div>
 
         {/* Content */}
         {loading ? (
-          <div className="py-8 text-center text-xs text-slate-500">Loading history...</div>
+          <div className="py-8 text-center text-xs text-white/40">Loading history...</div>
         ) : historyData && historyData.orders.length > 0 ? (
           <div className="space-y-4">
             
-            {/* Customer Summary Banner */}
-            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
+            {/* Customer Summary */}
+            <div className="bg-white/[0.03] p-3.5 rounded-lg border border-white/[0.06] flex items-center justify-between text-xs">
               <div>
-                <span className="text-slate-500 font-medium">Customer:</span>{' '}
-                <strong className="text-sky-900 font-extrabold text-sm">{historyData.customer}</strong>
+                <span className="text-white/40 font-medium">Customer:</span>{' '}
+                <strong className="text-white font-semibold text-sm">{historyData.customer}</strong>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-slate-600">
-                  Total Orders: <strong className="text-amber-700 font-bold">{historyData.totalOrders}</strong>
+                <span className="text-white/50">
+                  Total Orders: <strong className="text-white/80 font-medium">{historyData.totalOrders}</strong>
                 </span>
-                <span className="text-slate-600">
-                  Total Spent: <strong className="text-emerald-700 font-bold">₹{historyData.totalSpent.toLocaleString('en-IN')}</strong>
+                <span className="text-white/50">
+                  Total Spent: <strong className="text-emerald-400 font-mono">₹{historyData.totalSpent.toLocaleString('en-IN')}</strong>
                 </span>
               </div>
             </div>
 
-            {/* Recurring Specifications / Naap */}
+            {/* Recurring Specifications */}
             {historyData.measurementHistory.length > 0 && (
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+                <label className="text-[11px] font-medium uppercase tracking-wider text-white/40 block mb-1.5">
                   Saved Measurements & Attribute Memory:
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-36 overflow-y-auto pr-1">
                   {historyData.measurementHistory.map((m, idx) => (
-                    <div key={idx} className="bg-white p-2.5 rounded-lg border border-slate-200 text-xs shadow-2xs">
-                      <div className="flex items-center justify-between text-slate-800 font-bold mb-1">
+                    <div key={idx} className="bg-black/30 p-2.5 rounded-lg border border-white/[0.06] text-xs">
+                      <div className="flex items-center justify-between text-white/80 font-medium mb-1">
                         <span className="capitalize">{m.item}</span>
-                        <span className="text-[10px] text-slate-400 font-mono">{m.date}</span>
+                        <span className="text-[10px] text-white/30 font-mono">{m.date}</span>
                       </div>
                       <div className="flex flex-wrap gap-1">
                         {Object.entries(m.attributes).map(([k, v]) => (
                           <span
                             key={k}
-                            className="bg-slate-50 text-slate-700 px-2 py-0.5 rounded text-[10px] font-mono border border-slate-200"
+                            className="bg-white/[0.04] text-white/60 px-2 py-0.5 rounded text-[10px] font-mono border border-white/[0.06]"
                           >
-                            <strong className="text-sky-700">{k}:</strong> {String(v)}
+                            <strong className="text-blue-400">{k}:</strong> {String(v)}
                           </span>
                         ))}
                       </div>
@@ -112,32 +112,32 @@ export default function CustomerHistoryModal({ isOpen, onClose, initialCustomer 
 
             {/* Orders Timeline */}
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+              <label className="text-[11px] font-medium uppercase tracking-wider text-white/40 block mb-1.5">
                 Past Order History:
               </label>
               <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
                 {historyData.orders.map((ord) => (
                   <div
                     key={ord.id}
-                    className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs flex items-center justify-between"
+                    className="bg-white/[0.03] p-3 rounded-lg border border-white/[0.06] text-xs flex items-center justify-between"
                   >
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-mono font-bold text-slate-900">{ord.orderId}</span>
-                        <span className="px-2 py-0.5 rounded bg-white text-slate-700 text-[10px] uppercase font-bold border border-slate-200">
+                        <span className="font-mono text-white/70">{ord.orderId}</span>
+                        <span className="px-1.5 py-0.5 rounded bg-white/[0.06] text-white/50 text-[10px] uppercase font-mono">
                           {ord.domain}
                         </span>
-                        <span className="text-[10px] text-slate-500 font-medium">
+                        <span className="text-[10px] text-white/30 font-mono">
                           {ord.due_date ? `Due: ${ord.due_date}` : 'No date'}
                         </span>
                       </div>
-                      <div className="text-slate-700 mt-1 font-medium">
+                      <div className="text-white/60 mt-1">
                         {(ord.items || []).map(i => `${i.quantity}x ${i.description}`).join(', ')}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-mono font-bold text-emerald-700">₹{ord.amount || 0}</div>
-                      <span className="text-[10px] text-slate-500">{ord.status}</span>
+                      <div className="font-mono font-semibold text-emerald-400">₹{ord.amount || 0}</div>
+                      <span className="text-[10px] text-white/30">{ord.status}</span>
                     </div>
                   </div>
                 ))}
@@ -146,15 +146,15 @@ export default function CustomerHistoryModal({ isOpen, onClose, initialCustomer 
 
           </div>
         ) : (
-          <div className="py-8 text-center text-xs text-slate-400">
+          <div className="py-8 text-center text-xs text-white/30">
             {searchTerm ? 'No past orders found for this search.' : 'Type a customer name above to view prior orders and measurements.'}
           </div>
         )}
 
-        <div className="flex justify-end pt-3 border-t border-slate-200">
+        <div className="flex justify-end pt-3 border-t border-white/[0.06]">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs cursor-pointer"
+            className="px-4 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/10 text-white/70 font-medium text-xs cursor-pointer transition"
           >
             Close
           </button>

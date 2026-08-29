@@ -7,33 +7,27 @@ export default function OperationalInsights({
 }) {
   const { dueAndOverdue, receivables, capacity } = metrics;
 
+  const cards = [
+    { label: 'Due Today', value: dueAndOverdue.dueTodayCount, onClick: onFilterDueToday },
+    { label: 'Overdue', value: dueAndOverdue.overdueCount, onClick: onFilterOverdue, alert: dueAndOverdue.overdueCount > 0 },
+    { label: 'Unpaid', value: `₹${receivables.totalUnpaidAmount.toLocaleString('en-IN')}`, onClick: onOpenReceivablesModal, mono: true },
+    { label: 'Active Items', value: `${capacity.totalItemsCommitted}/${capacity.maxCapacity}`, onClick: onOpenCustomerLookup },
+  ];
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
-
-      {/* Due Today */}
-      <button onClick={onFilterDueToday} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-left hover:shadow transition cursor-pointer">
-        <p className="text-xs text-slate-400 font-medium">Due Today</p>
-        <p className="text-2xl font-semibold text-slate-900 mt-1">{dueAndOverdue.dueTodayCount}</p>
-      </button>
-
-      {/* Overdue */}
-      <button onClick={onFilterOverdue} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-left hover:shadow transition cursor-pointer">
-        <p className="text-xs text-slate-400 font-medium">Overdue</p>
-        <p className={`text-2xl font-semibold mt-1 ${dueAndOverdue.overdueCount > 0 ? 'text-red-600' : 'text-slate-900'}`}>{dueAndOverdue.overdueCount}</p>
-      </button>
-
-      {/* Receivables */}
-      <button onClick={onOpenReceivablesModal} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-left hover:shadow transition cursor-pointer">
-        <p className="text-xs text-slate-400 font-medium">Unpaid</p>
-        <p className="text-2xl font-semibold text-slate-900 mt-1 font-mono">₹{receivables.totalUnpaidAmount.toLocaleString('en-IN')}</p>
-      </button>
-
-      {/* Capacity */}
-      <button onClick={onOpenCustomerLookup} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-left hover:shadow transition cursor-pointer">
-        <p className="text-xs text-slate-400 font-medium">Active Items</p>
-        <p className="text-2xl font-semibold text-slate-900 mt-1">{capacity.totalItemsCommitted}<span className="text-sm text-slate-400 font-normal">/{capacity.maxCapacity}</span></p>
-      </button>
-
+      {cards.map((c) => (
+        <button
+          key={c.label}
+          onClick={c.onClick}
+          className="bg-white/[0.04] backdrop-blur-md rounded-xl p-4 border border-white/[0.06] text-left hover:bg-white/[0.07] hover:border-white/10 transition cursor-pointer"
+        >
+          <p className="text-[11px] text-white/40 font-medium tracking-wide">{c.label}</p>
+          <p className={`text-2xl font-semibold mt-1 ${c.alert ? 'text-red-400' : 'text-white'} ${c.mono ? 'font-mono' : ''}`}>
+            {c.value}
+          </p>
+        </button>
+      ))}
     </div>
   );
 }
