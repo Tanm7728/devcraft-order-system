@@ -131,9 +131,14 @@ export default function QuickIntake({ onSaveOrder }) {
       {parsed && (
         <div className="mt-4 border border-slate-100 rounded-lg bg-slate-50/50 p-4 space-y-3">
 
-          {/* Top row: domain tag + amount */}
+          {/* Top row: auto-detected domain + amount */}
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-500 font-medium">{domainLabel[parsed.domain] || '📦 Custom'}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400">Auto-Detected:</span>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-slate-700 font-medium">
+                {domainLabel[parsed.domain] || '📦 Custom'}
+              </span>
+            </div>
             {parsed.amount !== null && (
               <span className="font-mono font-semibold text-slate-800">₹{parsed.amount.toLocaleString('en-IN')}</span>
             )}

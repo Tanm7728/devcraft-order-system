@@ -135,9 +135,10 @@ export default function OrdersTable({
               {filteredOrders.map((ord) => (
                 <tr key={ord.id} className="hover:bg-slate-50/50 transition">
 
-                  {/* Order ID */}
+                  {/* Order ID + Domain */}
                   <td className="py-3 px-4">
-                    <span className="font-mono text-slate-700">{domainIcons[ord.domain] || '📦'} {ord.orderId}</span>
+                    <div className="font-mono text-slate-700">{domainIcons[ord.domain] || '📦'} {ord.orderId}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-slate-400 mt-0.5">{ord.domain || 'custom'}</div>
                   </td>
 
                   {/* Customer */}
@@ -235,7 +236,10 @@ export default function OrdersTable({
                   {columnOrders.map((ord) => (
                     <div key={ord.id} className="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5 hover:shadow-sm transition">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-mono text-slate-500">{domainIcons[ord.domain]} {ord.orderId}</span>
+                        <div>
+                          <span className="font-mono text-slate-500">{domainIcons[ord.domain]} {ord.orderId}</span>
+                          <div className="text-[9px] uppercase tracking-wider text-slate-400">{ord.domain || 'custom'}</div>
+                        </div>
                         <span className="font-mono text-slate-800">{ord.amount ? `₹${ord.amount}` : ''}</span>
                       </div>
                       <div>
