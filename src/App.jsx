@@ -178,10 +178,9 @@ export default function App() {
           onOpenReceivablesModal={() => setIsReceivablesModalOpen(true)}
         />
 
-        {/* Quick Message Intake & Live Parser */}
+        {/* Universal Smart Intake Box & Real-Time Parser */}
         <QuickIntake
           onSaveOrder={handleSaveOrder}
-          defaultDomain={selectedDomain}
         />
 
         {/* Orders Table & Kanban Board */}

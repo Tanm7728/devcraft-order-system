@@ -38,7 +38,7 @@ export async function createOrder(parsedData, rawMessage = '', domain = 'general
   const orderRecord = {
     orderId: parsedData.id || generateOrderId(),
     customer: parsedData.customer || 'Walk-in Customer',
-    domain: domain || parsedData.domain || 'general',
+    domain: parsedData.domain || domain || 'tailor',
     items: parsedData.items || [],
     due_date: parsedData.due_date || null,
     amount: parsedData.amount !== null && parsedData.amount !== undefined ? Number(parsedData.amount) : null,

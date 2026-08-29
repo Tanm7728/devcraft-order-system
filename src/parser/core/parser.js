@@ -15,6 +15,7 @@ import {
   extractCustomer,
   referencesPriorOrder,
   isMissingBlockingAttribute,
+  detectDomain,
   DOMAIN_VOCABULARY
 } from './entityextractor.js';
 import { parseDate } from './dateParser.js';
@@ -238,9 +239,12 @@ async function parseWithOpenAI(record) {
  * @returns {Object}
  */
 export function parseOffline(record) {
-  const message = record.message || '';
-  const domain = record.domain || null;
-  const receivedAt = record.received_at || new Date().toISOString();
+  const message = typeof record === 'string' ? record : (record?.message || '');
+  const recId = typeof record === 'object' && record ? record.id : 'record';
+  const receivedAt = (typeof record === 'object' && record?.received_at) ? record.received_at : new Date().toISOString();
+  const domain = (typeof record === 'object' && record?.domain && record.domain !== 'all' && record.domain !== 'general')
+    ? record.domain
+    : detectDomain(message);
 
   const { items, has_contradictory_quantity } = extractItemsAndAttributes(message, domain);
   const { due_date, had_unresolvable_deadline } = parseDate(message, receivedAt);
@@ -261,7 +265,7 @@ export function parseOffline(record) {
     missing_blocking_attribute
   });
 
-  return enforceSchema({
+  const enforced = enforceSchema({
     customer,
     items,
     due_date,
@@ -269,7 +273,12 @@ export function parseOffline(record) {
     references_prior_order,
     confidence,
     needs_clarification
-  }, record.id, domain);
+  }, recId, domain);
+
+  return {
+    ...enforced,
+    domain
+  };
 }
 
 // ─── Hybrid Router ──────────────────────────────────────────────────────────

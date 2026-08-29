@@ -42,7 +42,7 @@ export default function OrdersTable({
       const matchCust = ord.customer && ord.customer.toLowerCase().includes(q);
       const matchId = ord.orderId && ord.orderId.toLowerCase().includes(q);
       const matchMsg = ord.raw_message && ord.raw_message.toLowerCase().includes(q);
-      const matchItem = ord.items && ord.items.some(i => i.description.toLowerCase().includes(q));
+      const matchItem = Array.isArray(ord.items) && ord.items.some(i => i?.description && String(i.description).toLowerCase().includes(q));
       if (!matchCust && !matchId && !matchMsg && !matchItem) return false;
     }
     return true;

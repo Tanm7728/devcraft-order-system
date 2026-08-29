@@ -184,6 +184,76 @@ export function referencesPriorOrder(message) {
   return PRIOR_ORDER_PATTERNS.some(re => re.test(message));
 }
 
+/**
+ * Automatically detects the business domain from unstructured customer messages.
+ * @param {string} message
+ * @returns {'tailor' | 'tiffin' | 'electrician' | 'baker'}
+ */
+export function detectDomain(message) {
+  if (!message || typeof message !== 'string') return 'tailor';
+  const lower = message.toLowerCase();
+
+  const scores = { tailor: 0, tiffin: 0, electrician: 0, baker: 0 };
+
+  // Domain 1: Tailor
+  const tailorKeywords = [
+    'blouse', 'kurta', 'kurti', 'pajama', 'pyjama', 'pant', 'pent', 'shirt', 'salwar', 'lehenga',
+    'lehnga', 'sherwani', 'suit', 'waistcoat', 'koti', 'dupatta', 'kameez', 'trouser', 'vest',
+    'ब्लाउज', 'कुर्ता', 'कुर्ती', 'पजामा', 'पैजामा', 'पेंट', 'पैंट', 'कमीज', 'शर्ट', 'सलवार', 'लहंगा', 'शेरवानी', 'सूट', 'कोटी', 'दुपट्टा',
+    'chest', 'chhati', 'waist', 'kamar', 'length', 'lambai', 'lambaai', 'sleeve', 'aasteen', 'silna', 'silwana', 'silana',
+    'silaai', 'stitching', 'stitch', 'fabric', 'kapda', 'kapde', 'cotton', 'silk', 'linen', 'georgette', 'naap', 'naapna',
+    'alteration', 'alter', 'fitting', 'slim fit', 'loose'
+  ];
+  for (const kw of tailorKeywords) {
+    if (lower.includes(kw)) scores.tailor += 3;
+  }
+
+  // Domain 2: Tiffin
+  const tiffinKeywords = [
+    'tiffin', 'lunch', 'dinner', 'dabba', 'meal', 'roti', 'chapati', 'phulka', 'dal', 'daal',
+    'sabzi', 'sabji', 'bhaji', 'rice', 'chawal', 'rajma', 'chole', 'paneer', 'paratha', 'poha',
+    'idli', 'khichdi', 'curd', 'dahi', 'thali', 'टिफिन', 'लंच', 'डिनर', 'डब्बा', 'रोटी', 'दाल', 'सब्जी', 'चावल', 'राजमा', 'छोले', 'पनीर', 'पराठा', 'पोहा', 'इडली', 'खिचड़ी', 'दही', 'थाली',
+    'jain', 'swaminarayan', 'kam teekha', 'teekha', 'spice', 'spicy', 'mirchi', 'portion', 'dopahar', 'nashta', 'khana', 'pack'
+  ];
+  for (const kw of tiffinKeywords) {
+    if (lower.includes(kw)) scores.tiffin += 3;
+  }
+
+  // Domain 3: Electrician
+  const electricianKeywords = [
+    'geyser', 'gizer', 'fan', 'pankha', 'exhaust', 'wiring', 'wire', 'socket', 'switch', 'switchboard',
+    'mcb', 'inverter', 'motor', 'water motor', 'tubelight', 'tube light', 'bulb', 'ac point', 'doorbell', 'bell', 'ghanti',
+    'गीजर', 'पंखा', 'सीलिंग फैन', 'एग्जॉस्ट', 'वायरिंग', 'सॉकेट', 'स्विच', 'स्विचबोर्ड', 'इन्वर्टर', 'मोटर', 'ट्यूब लाइट', 'घंटी', 'डोरबेल',
+    'short circuit', 'short', 'spark', 'current', 'jhatka', 'fuse', 'watt', 'havells', 'crompton', 'bajaj', 'usha', 'anchor',
+    'orient', 'polycab', 'philips', 'syska', 'chal nahi raha', 'band hai', 'kharab'
+  ];
+  for (const kw of electricianKeywords) {
+    if (lower.includes(kw)) scores.electrician += 3;
+  }
+
+  // Domain 4: Baker
+  const bakerKeywords = [
+    'cake', 'birthday cake', 'bday cake', 'pastry', 'brownie', 'cupcake', 'cookies', 'cookie', 'bread loaf',
+    'bread', 'muffin', 'donut', 'doughnut', 'cheesecake', 'केक', 'बर्थडे केक', 'पेस्ट्री', 'ब्राउनी', 'कपकेक', 'कुकीज़', 'ब्रेड', 'मफिन', 'डोनट', 'चीज़केक',
+    'flavour', 'flavor', 'chocolate', 'vanilla', 'strawberry', 'pineapple', 'black forest', 'red velvet',
+    'butterscotch', 'eggless', 'egg free', 'bina ande', 'ande bina', 'kg', 'kilo', 'pound', 'tier', 'message on cake', 'happy birthday'
+  ];
+  for (const kw of bakerKeywords) {
+    if (lower.includes(kw)) scores.baker += 3;
+  }
+
+  let bestDomain = 'tailor';
+  let maxScore = 0;
+  for (const [dom, sc] of Object.entries(scores)) {
+    if (sc > maxScore) {
+      maxScore = sc;
+      bestDomain = dom;
+    }
+  }
+
+  return bestDomain;
+}
+
 const AMOUNT_PATTERNS = [
   /(?:₹|rs\.?|inr)\s*(\d+(?:[.,]\d+)?)/i,
   /(\d+(?:[.,]\d+)?)\s*(?:₹|rs\.?|rupees?|rupaye?|inr)/i,
