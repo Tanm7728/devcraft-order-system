@@ -135,7 +135,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       
       {/* Top Navigation */}
       <Navbar
@@ -154,10 +154,10 @@ export default function App() {
         {/* Toast Notification */}
         {toast && (
           <div className="fixed bottom-5 right-5 z-50 animate-bounce">
-            <div className={`px-4 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center space-x-2 border ${
+            <div className={`px-4 py-3 rounded-xl shadow-xl text-xs font-bold flex items-center space-x-2 border ${
               toast.type === 'success'
-                ? 'bg-emerald-950 text-emerald-200 border-emerald-700 shadow-emerald-950/50'
-                : 'bg-rose-950 text-rose-200 border-rose-700 shadow-rose-950/50'
+                ? 'bg-emerald-50 text-emerald-900 border-emerald-300 shadow-emerald-500/10'
+                : 'bg-rose-50 text-rose-900 border-rose-300 shadow-rose-500/10'
             }`}>
               <span>{toast.type === 'success' ? '✅' : '⚠️'}</span>
               <span>{toast.message}</span>
@@ -196,13 +196,13 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-4 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div>
-            ⚡ <strong className="text-slate-400">KaamFlow</strong> — Offline-First Intelligent Order Intake for Micro-Enterprises
+            ⚡ <strong className="text-slate-800">KaamFlow</strong> — Offline-First Intelligent Order Intake & Management for Micro-Enterprises
           </div>
-          <div className="font-mono text-[11px] text-slate-600">
-            DevCraft Competition Ready • Test A (87.7%) & Test C (100% Deterministic)
+          <div className="font-mono text-[11px] text-slate-500 font-semibold">
+            DevCraft Edition • 100% Deterministic Sync CRDT & Multi-Domain Dynamic Parsing
           </div>
         </div>
       </footer>

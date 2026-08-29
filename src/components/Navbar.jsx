@@ -23,7 +23,7 @@ export default function Navbar({
   }, []);
 
   const domains = [
-    { id: 'all', label: 'All Domains', icon: '🌐' },
+    { id: 'all', label: 'All Orders', icon: '🌐' },
     { id: 'tailor', label: 'Tailor', icon: '🧵' },
     { id: 'tiffin', label: 'Tiffin', icon: '🍱' },
     { id: 'electrician', label: 'Electrician', icon: '⚡' },
@@ -31,38 +31,38 @@ export default function Navbar({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-lg">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo & Offline Status */}
+          {/* Brand Logo & Offline Status */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20 text-xl font-black text-slate-950">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center shadow-md shadow-amber-500/20 text-xl font-black text-white">
               ⚡
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-amber-400 via-orange-300 to-amber-200 bg-clip-text text-transparent">
-                  KaamFlow
+                <span className="text-xl font-black tracking-tight text-slate-900">
+                  Kaam<span className="text-amber-600">Flow</span>
                 </span>
-                <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <span className="hidden sm:inline-block text-[10px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200/80">
                   Offline-First
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium">Smart Order Intake & Sync Engine</p>
+              <p className="text-xs text-slate-500 font-medium">Smart Order Intake & Sync Engine</p>
             </div>
           </div>
 
           {/* Domain Filter Pills */}
-          <nav className="hidden md:flex items-center space-x-1 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+          <nav className="hidden md:flex items-center space-x-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
             {domains.map((dom) => (
               <button
                 key={dom.id}
                 onClick={() => setSelectedDomain(dom.id)}
                 className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 cursor-pointer ${
                   selectedDomain === dom.id
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    ? 'bg-white text-slate-900 shadow-xs font-bold border border-slate-200/60'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
                 }`}
               >
                 <span>{dom.icon}</span>
@@ -72,19 +72,19 @@ export default function Navbar({
           </nav>
 
           {/* Action Tools & Connectivity Indicator */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-2.5">
             {/* Offline Status Badge */}
-            <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs">
-              <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
-              <span className="text-slate-300 font-medium hidden sm:inline">
-                {isOnline ? 'IndexedDB + Net' : '100% Offline'}
+            <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs">
+              <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+              <span className="text-slate-700 font-semibold hidden sm:inline">
+                {isOnline ? 'IndexedDB Active' : 'Offline Mode'}
               </span>
             </div>
 
             {/* Sync Conflict Demo Trigger */}
             <button
               onClick={onOpenConflict}
-              className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-semibold transition cursor-pointer"
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 text-xs font-bold transition cursor-pointer shadow-2xs"
               title="Test Deterministic Sync & Conflict Resolution"
             >
               <span>🔄</span>
@@ -94,7 +94,7 @@ export default function Navbar({
             {/* Analytics Modal */}
             <button
               onClick={onOpenHealth}
-              className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-semibold transition cursor-pointer"
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold transition cursor-pointer shadow-2xs"
               title="Business Analytics & Revenue Breakdown"
             >
               <span>📊</span>
@@ -104,7 +104,7 @@ export default function Navbar({
             {/* 1-Click Backup / Restore */}
             <button
               onClick={onOpenBackup}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs transition cursor-pointer"
+              className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs transition cursor-pointer"
               title="1-Click JSON Backup & Restore"
             >
               💾
@@ -114,7 +114,7 @@ export default function Navbar({
             {ordersCount === 0 && (
               <button
                 onClick={onSeedData}
-                className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition cursor-pointer"
+                className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold text-xs shadow-sm shadow-amber-500/30 transition cursor-pointer"
               >
                 ✨ Load Demo Data
               </button>
@@ -124,15 +124,15 @@ export default function Navbar({
         </div>
 
         {/* Mobile Domain Selector */}
-        <div className="flex md:hidden overflow-x-auto py-2 space-x-1 border-t border-slate-800/80">
+        <div className="flex md:hidden overflow-x-auto py-2 space-x-1 border-t border-slate-200">
           {domains.map((dom) => (
             <button
               key={dom.id}
               onClick={() => setSelectedDomain(dom.id)}
-              className={`flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs whitespace-nowrap font-medium transition cursor-pointer ${
+              className={`flex items-center space-x-1 px-3 py-1 rounded-lg text-xs whitespace-nowrap font-medium transition cursor-pointer ${
                 selectedDomain === dom.id
-                  ? 'bg-amber-500 text-slate-950 font-bold'
-                  : 'text-slate-400 bg-slate-900 border border-slate-800'
+                  ? 'bg-amber-500 text-white font-bold'
+                  : 'text-slate-600 bg-slate-100 border border-slate-200'
               }`}
             >
               <span>{dom.icon}</span>

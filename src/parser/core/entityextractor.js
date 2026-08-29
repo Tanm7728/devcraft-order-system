@@ -282,6 +282,7 @@ const CUSTOMER_DECOY_PATTERN = /((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bha
 export function extractCustomer(message) {
   if (!message) return null;
 
+  // 1. Decoy pattern: "A ke liye nahi, B ke liye"
   const decoyMatch = message.match(CUSTOMER_DECOY_PATTERN);
   if (decoyMatch && decoyMatch[2]) {
     const raw = decoyMatch[2].trim();
@@ -293,7 +294,8 @@ export function extractCustomer(message) {
     return raw;
   }
 
-  const bolMatch = message.match(/^((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+bol\s+raha\s+hu/iu);
+  // 2. "Ram bol raha hu", "Pooja didi bol rahi hu", "Suresh bhai bol rahe hain"
+  const bolMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mai[n]?\s+|me\s+|mai\s+)?((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi|sir|madam))?)\s+bol\s+(?:raha|rahi|rahe)\s+(?:hu|hoon|hun|hai|hain)\b/iu);
   if (bolMatch && bolMatch[1]) {
     const raw = bolMatch[1].trim();
     for (const kn of KNOWN_CUSTOMERS) {
@@ -304,7 +306,20 @@ export function extractCustomer(message) {
     return raw;
   }
 
-  const keLiyeMatch = message.match(/^((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+ke\s+liye\b/iu);
+  // 3. "Amit Sharma here", "Rahul this side"
+  const hereMatch = message.match(/(?:^|[.,!?;]|\s+)((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+(?:here|this side)\b/iu);
+  if (hereMatch && hereMatch[1]) {
+    const raw = hereMatch[1].trim();
+    for (const kn of KNOWN_CUSTOMERS) {
+      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
+        return kn;
+      }
+    }
+    return raw;
+  }
+
+  // 4. "Sunita Rao ke liye...", "Meena aunty ke liye..."
+  const keLiyeMatch = message.match(/(?:^|[.,!?;]|\s+)((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+ke\s+liye\b/iu);
   if (keLiyeMatch && keLiyeMatch[1]) {
     const raw = keLiyeMatch[1].trim();
     for (const kn of KNOWN_CUSTOMERS) {
@@ -315,6 +330,19 @@ export function extractCustomer(message) {
     return raw;
   }
 
+  // 5. "Mera naam Rohit hai", "Name: Suresh"
+  const nameMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mera\s+naam|name|customer)\s*[:-]?\s*((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\b/iu);
+  if (nameMatch && nameMatch[1]) {
+    const raw = nameMatch[1].trim();
+    for (const kn of KNOWN_CUSTOMERS) {
+      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
+        return kn;
+      }
+    }
+    return raw;
+  }
+
+  // 6. Known customers dictionary with negation check
   for (const name of KNOWN_CUSTOMERS) {
     const re = new RegExp(`(?:^|[\\s,;!?])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s,;!?]|$)`, 'i');
     if (re.test(message)) {
