@@ -128,7 +128,7 @@ export default function App() {
         ordersCount={orders.length}
       />
 
-      <main className="flex-1 max-w-6xl w-full mx-auto px-5 sm:px-8 py-6">
+      <main className="flex-1 w-full max-w-[1600px] mx-auto px-4 md:px-8 py-6">
 
         {/* Toast */}
         {toast && (
