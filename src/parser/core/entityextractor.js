@@ -1,5 +1,5 @@
 /**
- * entityextractor.js — NLP-Lite & Domain-Aware Entity & Attribute Extractor
+ * entityextractor.js — NLP-Lite & Open-Domain / Zero-Shot Entity & Attribute Extractor
  * Pure JS — zero network calls.
  */
 
@@ -186,11 +186,12 @@ export function referencesPriorOrder(message) {
 
 /**
  * Automatically infers the business domain from unstructured customer messages.
+ * Falls back dynamically to 'custom' for unseen domain types.
  * @param {string} message
- * @returns {'tailor' | 'tiffin' | 'electrician' | 'baker'}
+ * @returns {'tailor' | 'tiffin' | 'electrician' | 'baker' | 'custom'}
  */
 export function detectDomain(message) {
-  if (!message || typeof message !== 'string') return 'tailor';
+  if (!message || typeof message !== 'string') return 'custom';
   const lower = message.toLowerCase();
 
   const scores = { tailor: 0, tiffin: 0, electrician: 0, baker: 0 };
@@ -246,7 +247,7 @@ export function detectDomain(message) {
     if (lower.includes(kw)) scores.baker += 2;
   }
 
-  let bestDomain = 'tailor';
+  let bestDomain = 'custom';
   let maxScore = 0;
   for (const [dom, sc] of Object.entries(scores)) {
     if (sc > maxScore) {
@@ -288,11 +289,26 @@ const CUSTOMER_DECOY_PATTERN = /((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bha
  */
 function cleanCustomerCandidate(raw) {
   if (!raw) return null;
-  let name = raw.trim();
+  let parts = raw.trim().split(/\s+/);
+  if (parts.length > 1 && (NON_CUSTOMER_WORDS.has(parts[1].toLowerCase()) || ROOMS.includes(parts[1].toLowerCase()))) {
+    parts = [parts[0]];
+  }
+  const name = parts.join(' ');
   const lower = name.toLowerCase();
 
-  // If candidate is a stop word (e.g. 'Bhaiya', 'Order')
+  // If candidate is a stop word (e.g. 'Bhaiya', 'Order') or item description
   if (NON_CUSTOMER_WORDS.has(lower) || wordToNumber(lower) !== null) {
+    return null;
+  }
+
+  // Check known items and trade words
+  for (const items of Object.values(DOMAIN_ITEMS)) {
+    if (items.includes(lower)) return null;
+  }
+  for (const [itKey, aliases] of Object.entries(ALL_ITEMS_MAP)) {
+    if (itKey === lower || aliases.includes(lower)) return null;
+  }
+  if (COLORS.includes(lower) || FABRICS.includes(lower) || FLAVOURS.includes(lower)) {
     return null;
   }
 
@@ -307,6 +323,9 @@ function cleanCustomerCandidate(raw) {
   return name;
 }
 
+/**
+ * Universal Open-Domain Customer Name Extractor
+ */
 export function extractCustomer(message) {
   if (!message) return null;
 
@@ -345,14 +364,21 @@ export function extractCustomer(message) {
     if (res) return res;
   }
 
-  // 6. "Mera naam Rohit hai", "Name: Suresh"
+  // 6. Case-Marker Subject Heuristic: "Rahul ne 500 rs...", "Pooja ko...", "Suresh se..."
+  const caseMarkerMatch = message.match(/(?:^|[.,!?;]|\s+)((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?)\s+(?:ne|ko|ka|ki|ke|se)\b/iu);
+  if (caseMarkerMatch && caseMarkerMatch[1]) {
+    const res = cleanCustomerCandidate(caseMarkerMatch[1]);
+    if (res) return res;
+  }
+
+  // 7. "Mera naam Rohit hai", "Name: Suresh"
   const nameMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mera\s+naam|name|customer)\s*[:-]?\s*((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\b/iu);
   if (nameMatch && nameMatch[1]) {
     const res = cleanCustomerCandidate(nameMatch[1]);
     if (res) return res;
   }
 
-  // 7. Known customers dictionary lookup with negation guard
+  // 8. Known customers dictionary lookup with negation guard
   for (const name of KNOWN_CUSTOMERS) {
     const re = new RegExp(`(?:^|[\\s,;!?])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s,;!?]|$)`, 'i');
     if (re.test(message)) {
@@ -361,6 +387,13 @@ export function extractCustomer(message) {
         return name;
       }
     }
+  }
+
+  // 9. Sentence starting with a proper noun followed by an action/intent e.g. "Rahul 2 books order kar raha hai"
+  const firstWordMatch = message.match(/^((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?)\s+(?:order|bhejna|chahiye|de\s+dena|lena|le\s+lo)\b/iu);
+  if (firstWordMatch && firstWordMatch[1]) {
+    const res = cleanCustomerCandidate(firstWordMatch[1]);
+    if (res) return res;
   }
 
   return null;
@@ -599,6 +632,7 @@ export function extractItemsAndAttributes(rawMessage, domain) {
   const seenCanonical = new Map();
   const clauses = rawMessage.split(/[,;.\n]+|\s+aur\s+|\s+and\s+/i);
 
+  // 1. Check Canonical Items
   for (let cl of clauses) {
     if (!cl.trim()) continue;
     cl = convertDevanagariDigits(cl);
@@ -643,7 +677,7 @@ export function extractItemsAndAttributes(rawMessage, domain) {
     }
   }
 
-  // Fallback: full string scan if clauses missed an item
+  // 2. Full string scan fallback for canonical items
   if (seenCanonical.size === 0) {
     for (const [canonicalDesc, aliases] of Object.entries(ALL_ITEMS_MAP)) {
       if (validItemsForDomain && !validItemsForDomain.has(canonicalDesc)) continue;
@@ -672,6 +706,45 @@ export function extractItemsAndAttributes(rawMessage, domain) {
           break;
         }
       }
+    }
+  }
+
+  // 3. Open-Domain / Zero-Shot Item Extraction: [Number] + [Noun]
+  if (seenCanonical.size === 0) {
+    const openMatches = [];
+    const openRe = /(?:^|[\s,;])(?:for\s+)?(\d+|ek|do|teen|chaar|char|paanch|panch|chhe|chhah|saat|aath|nau|das|barah|darjan|dozen)\s+([a-zA-Z\p{L}\p{M}]+)(?=$|[\s,;!?])/giu;
+    let m;
+    const nonItemWords = new Set([
+      'rs', 'rupee', 'rupees', 'rupaye', 'inr', 'din', 'days', 'hours', 'ghante', 'baje',
+      'tarikh', 'date', 'kg', 'kilo', 'inch', 'gm', 'gram', 'litre', 'liter', 'month', 'mahina',
+      'baar', 'times', 'percent', 'bhaiya', 'didi', 'sir', 'madam', 'kal', 'aaj', 'tak', 'se',
+      'diye', 'de', 'dena', 'order', 'hai', 'hain', 'tha', 'thi', 'the', 'mein', 'me'
+    ]);
+
+    while ((m = openRe.exec(converted)) !== null) {
+      const rawQty = m[1];
+      const rawNoun = m[2].trim().toLowerCase();
+
+      if (!nonItemWords.has(rawNoun) && rawNoun.length >= 2) {
+        const qty = wordToNumber(rawQty) || parseInt(rawQty, 10) || 1;
+        let desc = rawNoun;
+        if (desc.endsWith('s') && desc.length > 3 && !desc.endsWith('ss')) {
+          desc = desc.slice(0, -1);
+        }
+
+        openMatches.push({
+          description: desc,
+          quantity: Math.max(1, Math.round(qty)),
+          attributes: {}
+        });
+      }
+    }
+
+    if (openMatches.length > 0) {
+      return {
+        items: openMatches,
+        has_contradictory_quantity
+      };
     }
   }
 

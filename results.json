@@ -123,7 +123,7 @@
   },
   {
     "id": "train-0006",
-    "customer": null,
+    "customer": "rs tak",
     "items": [
       {
         "description": "wiring",
@@ -143,7 +143,7 @@
     "due_date": "2026-10-09",
     "amount": 300,
     "references_prior_order": false,
-    "confidence": 0.9,
+    "confidence": 0.95,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -248,7 +248,7 @@
   },
   {
     "id": "train-0012",
-    "customer": null,
+    "customer": "suit linen",
     "items": [
       {
         "description": "suit",
@@ -269,7 +269,7 @@
     "due_date": "2026-09-18",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -326,17 +326,28 @@
   {
     "id": "train-0015",
     "customer": null,
-    "items": [],
+    "items": [
+      {
+        "description": "ya",
+        "quantity": 3,
+        "attributes": {}
+      },
+      {
+        "description": "west",
+        "quantity": 4,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
-    "needs_clarification": true,
+    "confidence": 0.55,
+    "needs_clarification": false,
     "domain": "tailor"
   },
   {
     "id": "train-0016",
-    "customer": null,
+    "customer": "guruvar",
     "items": [
       {
         "description": "doorbell",
@@ -414,7 +425,7 @@
   },
   {
     "id": "train-0020",
-    "customer": null,
+    "customer": "motor Anchor",
     "items": [
       {
         "description": "water motor",
@@ -479,7 +490,7 @@
   },
   {
     "id": "train-0023",
-    "customer": null,
+    "customer": "Orient",
     "items": [
       {
         "description": "water motor",
@@ -506,7 +517,7 @@
   },
   {
     "id": "train-0024",
-    "customer": null,
+    "customer": "do cookies",
     "items": [
       {
         "description": "cookies",
@@ -521,7 +532,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
+    "confidence": 0.75,
     "needs_clarification": false,
     "domain": "baker"
   },
@@ -555,7 +566,7 @@
   },
   {
     "id": "train-0026",
-    "customer": null,
+    "customer": "watt",
     "items": [
       {
         "description": "ceiling fan",
@@ -570,7 +581,7 @@
     "due_date": "2026-08-31",
     "amount": 300,
     "references_prior_order": false,
-    "confidence": 0.9,
+    "confidence": 0.95,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -681,7 +692,7 @@
   },
   {
     "id": "train-0032",
-    "customer": null,
+    "customer": "kg",
     "items": [
       {
         "description": "birthday cake",
@@ -723,7 +734,7 @@
   },
   {
     "id": "train-0034",
-    "customer": null,
+    "customer": "tier",
     "items": [
       {
         "description": "cake",
@@ -749,7 +760,7 @@
   },
   {
     "id": "train-0035",
-    "customer": null,
+    "customer": "invertor Usha",
     "items": [
       {
         "description": "geyser",
@@ -770,7 +781,7 @@
   },
   {
     "id": "train-0036",
-    "customer": null,
+    "customer": "गीजर Crompton",
     "items": [
       {
         "description": "geyser",
@@ -815,18 +826,24 @@
   },
   {
     "id": "train-0038",
-    "customer": null,
-    "items": [],
+    "customer": "tier",
+    "items": [
+      {
+        "description": "tier",
+        "quantity": 2,
+        "attributes": {}
+      }
+    ],
     "due_date": "2026-10-08",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.15,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "baker"
   },
   {
     "id": "train-0039",
-    "customer": null,
+    "customer": "aur",
     "items": [
       {
         "description": "ceiling fan",
@@ -853,7 +870,7 @@
   },
   {
     "id": "train-0040",
-    "customer": null,
+    "customer": "watt",
     "items": [
       {
         "description": "tube light",
@@ -891,7 +908,7 @@
   },
   {
     "id": "train-0042",
-    "customer": null,
+    "customer": "kurta silk",
     "items": [
       {
         "description": "kurta",
@@ -911,7 +928,7 @@
     "due_date": "2026-08-20",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -958,17 +975,23 @@
   {
     "id": "train-0044",
     "customer": "Naveen",
-    "items": [],
+    "items": [
+      {
+        "description": "august",
+        "quantity": 23,
+        "attributes": {}
+      }
+    ],
     "due_date": "2026-08-23",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.35,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "baker"
   },
   {
     "id": "train-0045",
-    "customer": null,
+    "customer": "watt",
     "items": [
       {
         "description": "wiring",
@@ -1046,12 +1069,18 @@
   {
     "id": "train-0048",
     "customer": "Manoj",
-    "items": [],
+    "items": [
+      {
+        "description": "breakfast",
+        "quantity": 3,
+        "attributes": {}
+      }
+    ],
     "due_date": "2026-09-19",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.35,
-    "needs_clarification": true,
+    "confidence": 0.7,
+    "needs_clarification": false,
     "domain": "tiffin"
   },
   {
@@ -1348,7 +1377,7 @@
   },
   {
     "id": "train-0060",
-    "customer": null,
+    "customer": "ghanti Usha",
     "items": [
       {
         "description": "doorbell",
@@ -1370,7 +1399,7 @@
     "due_date": "2026-09-03",
     "amount": 500,
     "references_prior_order": true,
-    "confidence": 0.95,
+    "confidence": 1,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -1395,7 +1424,7 @@
   },
   {
     "id": "train-0062",
-    "customer": "Rakesh",
+    "customer": "somvar",
     "items": [
       {
         "description": "curd",
@@ -1415,7 +1444,7 @@
   },
   {
     "id": "train-0063",
-    "customer": null,
+    "customer": "tier",
     "items": [
       {
         "description": "donut",
@@ -1435,7 +1464,7 @@
     "due_date": "2026-09-11",
     "amount": 1500,
     "references_prior_order": false,
-    "confidence": 0.9,
+    "confidence": 0.95,
     "needs_clarification": false,
     "domain": "baker"
   },
@@ -1542,7 +1571,7 @@
   },
   {
     "id": "train-0068",
-    "customer": null,
+    "customer": "blouse silk",
     "items": [
       {
         "description": "blouse",
@@ -1590,7 +1619,7 @@
   },
   {
     "id": "train-0071",
-    "customer": null,
+    "customer": "ek pankha",
     "items": [
       {
         "description": "ceiling fan",
@@ -1657,7 +1686,7 @@
   },
   {
     "id": "train-0074",
-    "customer": "Asha",
+    "customer": "watt",
     "items": [
       {
         "description": "inverter",
@@ -1877,7 +1906,7 @@
   },
   {
     "id": "train-0083",
-    "customer": null,
+    "customer": "fridge point",
     "items": [
       {
         "description": "geyser",
@@ -1898,7 +1927,7 @@
     "due_date": "2026-09-07",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -2058,7 +2087,7 @@
   },
   {
     "id": "train-0090",
-    "customer": null,
+    "customer": "somvar",
     "items": [
       {
         "description": "chole",
@@ -2077,7 +2106,7 @@
     "due_date": "2026-10-06",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tiffin"
   },
@@ -2103,12 +2132,18 @@
   },
   {
     "id": "train-0092",
-    "customer": null,
-    "items": [],
+    "customer": "tier",
+    "items": [
+      {
+        "description": "tier",
+        "quantity": 1,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "baker"
   },
@@ -2268,7 +2303,7 @@
   },
   {
     "id": "train-0100",
-    "customer": null,
+    "customer": "somvar",
     "items": [
       {
         "description": "sherwani",
@@ -2289,7 +2324,7 @@
     "due_date": "2026-10-07",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -2402,12 +2437,23 @@
   },
   {
     "id": "train-0106",
-    "customer": null,
-    "items": [],
+    "customer": "invertor Polycab",
+    "items": [
+      {
+        "description": "invertor",
+        "quantity": 3,
+        "attributes": {}
+      },
+      {
+        "description": "board",
+        "quantity": 1,
+        "attributes": {}
+      }
+    ],
     "due_date": "2026-08-22",
     "amount": 1500,
     "references_prior_order": true,
-    "confidence": 0.4,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "electrician"
   },
@@ -2454,7 +2500,7 @@
   },
   {
     "id": "train-0109",
-    "customer": null,
+    "customer": "shuru hone",
     "items": [
       {
         "description": "kameez",
@@ -2467,7 +2513,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.75,
+    "confidence": 0.8,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -2555,7 +2601,7 @@
   },
   {
     "id": "train-0114",
-    "customer": null,
+    "customer": "exam",
     "items": [
       {
         "description": "sherwani",
@@ -2657,7 +2703,7 @@
   },
   {
     "id": "train-0118",
-    "customer": null,
+    "customer": "watt",
     "items": [
       {
         "description": "geyser",
@@ -2677,7 +2723,7 @@
   },
   {
     "id": "train-0119",
-    "customer": null,
+    "customer": "agle hafte",
     "items": [
       {
         "description": "thali",
@@ -2696,7 +2742,7 @@
     "due_date": "2026-09-04",
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.85,
+    "confidence": 0.9,
     "needs_clarification": false,
     "domain": "tiffin"
   },
@@ -2741,7 +2787,7 @@
   },
   {
     "id": "train-0122",
-    "customer": null,
+    "customer": "mangalvar",
     "items": [
       {
         "description": "ac point",
@@ -2765,7 +2811,7 @@
     "due_date": "2026-09-02",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -2857,12 +2903,12 @@
   },
   {
     "id": "train-0126",
-    "customer": null,
+    "customer": "tak",
     "items": [],
     "due_date": "2026-10-08",
     "amount": 650,
     "references_prior_order": false,
-    "confidence": 0.3,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -2984,7 +3030,7 @@
   },
   {
     "id": "train-0133",
-    "customer": null,
+    "customer": "wiring Crompton",
     "items": [
       {
         "description": "wiring",
@@ -3007,7 +3053,7 @@
     "due_date": "2026-10-17",
     "amount": 650,
     "references_prior_order": false,
-    "confidence": 0.9,
+    "confidence": 0.95,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -3049,7 +3095,7 @@
   },
   {
     "id": "train-0136",
-    "customer": null,
+    "customer": "sleeve silk",
     "items": [
       {
         "description": "lehenga",
@@ -3063,19 +3109,25 @@
     "due_date": "2026-09-18",
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.85,
+    "confidence": 0.9,
     "needs_clarification": false,
     "domain": "tailor"
   },
   {
     "id": "train-0137",
     "customer": null,
-    "items": [],
+    "items": [
+      {
+        "description": "ka",
+        "quantity": 200,
+        "attributes": {}
+      }
+    ],
     "due_date": "2026-08-24",
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.25,
-    "needs_clarification": true,
+    "confidence": 0.7,
+    "needs_clarification": false,
     "domain": "tiffin"
   },
   {
@@ -3111,7 +3163,7 @@
   },
   {
     "id": "train-0139",
-    "customer": null,
+    "customer": "agle hafte",
     "items": [
       {
         "description": "dal",
@@ -3135,13 +3187,13 @@
     "due_date": "2026-08-26",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tiffin"
   },
   {
     "id": "train-0140",
-    "customer": null,
+    "customer": "budhvar",
     "items": [
       {
         "description": "wiring",
@@ -3164,7 +3216,7 @@
     "due_date": "2026-10-04",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -3193,28 +3245,40 @@
   {
     "id": "train-0142",
     "customer": "Gopal ji",
-    "items": [],
+    "items": [
+      {
+        "description": "lunch",
+        "quantity": 2,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.2,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "tiffin"
   },
   {
     "id": "train-0143",
     "customer": "Rakesh",
-    "items": [],
+    "items": [
+      {
+        "description": "parantha",
+        "quantity": 2,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": 1200,
     "references_prior_order": false,
-    "confidence": 0.35,
-    "needs_clarification": true,
+    "confidence": 0.7,
+    "needs_clarification": false,
     "domain": "tiffin"
   },
   {
     "id": "train-0144",
-    "customer": null,
+    "customer": "diwali",
     "items": [
       {
         "description": "dupatta",
@@ -3253,7 +3317,7 @@
   },
   {
     "id": "train-0146",
-    "customer": null,
+    "customer": "ghanti Orient",
     "items": [
       {
         "description": "doorbell",
@@ -3360,7 +3424,7 @@
   },
   {
     "id": "train-0150",
-    "customer": null,
+    "customer": "festival",
     "items": [
       {
         "description": "pastry",
@@ -3602,24 +3666,41 @@
   },
   {
     "id": "train-0160",
-    "customer": null,
-    "items": [],
+    "customer": "tier",
+    "items": [
+      {
+        "description": "browni",
+        "quantity": 2,
+        "attributes": {}
+      },
+      {
+        "description": "tier",
+        "quantity": 2,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "baker"
   },
   {
     "id": "train-0161",
     "customer": null,
-    "items": [],
+    "items": [
+      {
+        "description": "parantha",
+        "quantity": 4,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
-    "needs_clarification": true,
+    "confidence": 0.55,
+    "needs_clarification": false,
     "domain": "tiffin"
   },
   {
@@ -3670,7 +3751,7 @@
   },
   {
     "id": "train-0164",
-    "customer": null,
+    "customer": "guruvar",
     "items": [
       {
         "description": "lehenga",
@@ -3683,7 +3764,7 @@
     "due_date": "2026-09-11",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -3785,7 +3866,7 @@
   },
   {
     "id": "train-0169",
-    "customer": null,
+    "customer": "mahine",
     "items": [
       {
         "description": "donut",
@@ -3841,7 +3922,7 @@
   },
   {
     "id": "train-0172",
-    "customer": null,
+    "customer": "somvar",
     "items": [
       {
         "description": "pastry",
@@ -3972,7 +4053,7 @@
   },
   {
     "id": "train-0177",
-    "customer": null,
+    "customer": "point Usha",
     "items": [
       {
         "description": "ac point",
@@ -4004,7 +4085,7 @@
     "due_date": "2026-09-15",
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.85,
+    "confidence": 0.9,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -4046,7 +4127,7 @@
   },
   {
     "id": "train-0180",
-    "customer": null,
+    "customer": "assi watt",
     "items": [
       {
         "description": "wiring",
@@ -4151,7 +4232,7 @@
   },
   {
     "id": "train-0185",
-    "customer": null,
+    "customer": "teen pant",
     "items": [
       {
         "description": "pant",
@@ -4162,7 +4243,7 @@
     "due_date": "2026-10-14",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.65,
+    "confidence": 0.7,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -4226,7 +4307,7 @@
   },
   {
     "id": "train-0189",
-    "customer": null,
+    "customer": "watt",
     "items": [
       {
         "description": "geyser",
@@ -4246,7 +4327,7 @@
   },
   {
     "id": "train-0190",
-    "customer": null,
+    "customer": "festival",
     "items": [
       {
         "description": "idli",
@@ -4307,7 +4388,7 @@
   },
   {
     "id": "train-0193",
-    "customer": "Gopal ji",
+    "customer": "somvar",
     "items": [
       {
         "description": "sherwani",
@@ -4337,7 +4418,7 @@
   },
   {
     "id": "train-0194",
-    "customer": null,
+    "customer": "assi watt",
     "items": [
       {
         "description": "ceiling fan",
@@ -4351,7 +4432,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
+    "confidence": 0.75,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -4505,7 +4586,7 @@
   },
   {
     "id": "train-0201",
-    "customer": "Priya",
+    "customer": "is weekend",
     "items": [
       {
         "description": "roti",
@@ -4633,7 +4714,7 @@
   },
   {
     "id": "train-0206",
-    "customer": null,
+    "customer": "fan Usha",
     "items": [
       {
         "description": "ceiling fan",
@@ -4696,7 +4777,7 @@
   },
   {
     "id": "train-0209",
-    "customer": "Priya",
+    "customer": "tubelight Anchor",
     "items": [
       {
         "description": "tube light",
@@ -4774,7 +4855,7 @@
   },
   {
     "id": "train-0212",
-    "customer": "Naveen",
+    "customer": "is weekend",
     "items": [
       {
         "description": "sabzi",
@@ -4884,7 +4965,7 @@
   },
   {
     "id": "train-0216",
-    "customer": null,
+    "customer": "somvar",
     "items": [
       {
         "description": "salwar",
@@ -4908,13 +4989,13 @@
     "due_date": "2026-09-23",
     "amount": 800,
     "references_prior_order": true,
-    "confidence": 0.95,
+    "confidence": 1,
     "needs_clarification": false,
     "domain": "tailor"
   },
   {
     "id": "train-0217",
-    "customer": null,
+    "customer": "shuru hone",
     "items": [
       {
         "description": "kameez",
@@ -4941,7 +5022,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
+    "confidence": 0.75,
     "needs_clarification": false,
     "domain": "tailor"
   },
@@ -4966,7 +5047,7 @@
   },
   {
     "id": "train-0219",
-    "customer": null,
+    "customer": "fridge point",
     "items": [
       {
         "description": "geyser",
@@ -4981,7 +5062,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
+    "confidence": 0.75,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -5063,7 +5144,7 @@
   },
   {
     "id": "train-0223",
-    "customer": null,
+    "customer": "paanch Orient",
     "items": [
       {
         "description": "switch board",
@@ -5088,7 +5169,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
+    "confidence": 0.75,
     "needs_clarification": false,
     "domain": "electrician"
   },
@@ -5309,7 +5390,7 @@
   },
   {
     "id": "train-0233",
-    "customer": null,
+    "customer": "agle hafte",
     "items": [
       {
         "description": "paneer sabzi",
@@ -5334,19 +5415,25 @@
     "due_date": "2026-09-06",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tiffin"
   },
   {
     "id": "train-0234",
     "customer": null,
-    "items": [],
+    "items": [
+      {
+        "description": "shart",
+        "quantity": 1,
+        "attributes": {}
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
-    "needs_clarification": true,
+    "confidence": 0.55,
+    "needs_clarification": false,
     "domain": "tailor"
   },
   {
@@ -5634,7 +5721,7 @@
   },
   {
     "id": "train-0247",
-    "customer": null,
+    "customer": "fan Havells",
     "items": [
       {
         "description": "ceiling fan",
@@ -5657,13 +5744,13 @@
     "due_date": "2026-08-24",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "electrician"
   },
   {
     "id": "train-0248",
-    "customer": "Deepak bhai",
+    "customer": "switchboard Havells",
     "items": [
       {
         "description": "switch board",
@@ -5703,7 +5790,7 @@
   },
   {
     "id": "train-0250",
-    "customer": null,
+    "customer": "budhvar",
     "items": [
       {
         "description": "sherwani",
@@ -5734,7 +5821,7 @@
     "due_date": "2026-10-02",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.8,
+    "confidence": 0.85,
     "needs_clarification": false,
     "domain": "tailor"
   }

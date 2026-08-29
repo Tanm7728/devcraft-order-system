@@ -13,6 +13,8 @@ export default function QuickIntake({ onSaveOrder }) {
     tiffin: { label: 'Tiffin & Meal Service', icon: '🍱', color: 'border-orange-200 bg-orange-50 text-orange-900' },
     electrician: { label: 'Electrical & Repairs', icon: '⚡', color: 'border-sky-200 bg-sky-50 text-sky-900' },
     baker: { label: 'Bakery & Confectionery', icon: '🎂', color: 'border-pink-200 bg-pink-50 text-pink-900' },
+    custom: { label: 'Custom / Open-Domain', icon: '📦', color: 'border-purple-200 bg-purple-50 text-purple-900' },
+    general: { label: 'Custom / Open-Domain', icon: '📦', color: 'border-purple-200 bg-purple-50 text-purple-900' },
   };
 
   // Instant zero-lag synchronous live parsing on every keystroke
@@ -338,6 +340,7 @@ export default function QuickIntake({ onSaveOrder }) {
                   <option value="tiffin">🍱 Tiffin</option>
                   <option value="electrician">⚡ Electrician</option>
                   <option value="baker">🎂 Baker</option>
+                  <option value="custom">📦 Custom / Other</option>
                 </select>
               </div>
               <div>

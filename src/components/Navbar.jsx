@@ -28,6 +28,7 @@ export default function Navbar({
     { id: 'tiffin', label: 'Tiffin', icon: '🍱' },
     { id: 'electrician', label: 'Electrician', icon: '⚡' },
     { id: 'baker', label: 'Baker', icon: '🎂' },
+    { id: 'custom', label: 'Custom', icon: '📦' },
   ];
 
   return (
