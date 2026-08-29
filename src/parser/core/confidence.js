@@ -60,6 +60,10 @@ export function computeConfidence(ctx) {
 
   if (noItems) {
     score = 0.0;
+    if (ctx.customer !== null) score += 0.20;
+    if (ctx.due_date !== null) score += 0.15;
+    if (ctx.amount !== null) score += 0.15;
+    if (ctx.references_prior_order) score += 0.10;
   } else {
     score += 0.40; // Base item presence
 
@@ -76,7 +80,7 @@ export function computeConfidence(ctx) {
     if (ctx.references_prior_order) score += 0.05;
   }
 
-  if (needs_clarification && score > 0.4) {
+  if (needs_clarification && score > 0.5) {
     score = Math.min(score, 0.5);
   }
 

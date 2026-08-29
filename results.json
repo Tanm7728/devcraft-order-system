@@ -14,8 +14,8 @@
         "description": "wiring",
         "quantity": 3,
         "attributes": {
-          "brand": "Anchor",
-          "issue": "leaking current"
+          "issue": "leaking current",
+          "brand": "Anchor"
         }
       }
     ],
@@ -154,32 +154,24 @@
       {
         "description": "cake",
         "quantity": 1,
-        "attributes": {
-          "flavour": "red velvet"
-        }
+        "attributes": {}
       },
       {
         "description": "pastry",
         "quantity": 1,
-        "attributes": {
-          "flavour": "coffee",
-          "egg_free": true,
-          "shape": "round"
-        }
+        "attributes": {}
       },
       {
         "description": "cheesecake",
         "quantity": 2,
-        "attributes": {
-          "flavour": "vanilla"
-        }
+        "attributes": {}
       }
     ],
     "due_date": null,
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.8,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "baker"
   },
   {
@@ -190,8 +182,8 @@
         "description": "pant",
         "quantity": 6,
         "attributes": {
-          "fit": "loose",
-          "color": "maroon"
+          "color": "maroon",
+          "fit": "loose"
         }
       }
     ],
@@ -231,7 +223,7 @@
     "due_date": "2026-08-22",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.35,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -262,8 +254,8 @@
         "description": "suit",
         "quantity": 1,
         "attributes": {
-          "fabric": "linen",
-          "color": "pink"
+          "color": "pink",
+          "fabric": "linen"
         }
       },
       {
@@ -311,8 +303,8 @@
         "attributes": {
           "chest": 36,
           "waist": 40,
-          "size": "M",
-          "color": "bottle green"
+          "color": "bottle green",
+          "size": "M"
         }
       },
       {
@@ -320,8 +312,7 @@
         "quantity": 5,
         "attributes": {
           "length": 38,
-          "sleeve": "three-quarter",
-          "size": "XL"
+          "sleeve": "three-quarter"
         }
       }
     ],
@@ -391,8 +382,8 @@
         "description": "geyser",
         "quantity": 1,
         "attributes": {
-          "brand": "Polycab",
           "issue": "noise",
+          "brand": "Polycab",
           "appliance": "geyser"
         }
       }
@@ -468,17 +459,22 @@
         "description": "ac point",
         "quantity": 1,
         "attributes": {
-          "issue": "spark",
-          "wattage": 2000,
           "appliance": "ac"
+        }
+      },
+      {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "appliance": "fan"
         }
       }
     ],
     "due_date": "2026-09-09",
     "amount": 500,
     "references_prior_order": true,
-    "confidence": 0.95,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "electrician"
   },
   {
@@ -545,8 +541,8 @@
         "description": "lehenga",
         "quantity": 1,
         "attributes": {
-          "size": "M",
-          "fabric": "linen"
+          "fabric": "linen",
+          "size": "M"
         }
       }
     ],
@@ -567,7 +563,7 @@
         "attributes": {
           "issue": "short circuit",
           "room": "balcony",
-          "wattage": 40
+          "wattage": "40W"
         }
       }
     ],
@@ -586,9 +582,9 @@
         "description": "curd",
         "quantity": 14,
         "attributes": {
-          "days": 14,
+          "meal": "breakfast",
           "spice_level": "medium",
-          "meal": "breakfast"
+          "days": 14
         }
       }
     ],
@@ -607,8 +603,13 @@
         "description": "tube light",
         "quantity": 5,
         "attributes": {
-          "issue": "fuse blown",
-          "wattage": 100,
+          "issue": "fuse blown"
+        }
+      },
+      {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
           "appliance": "fan"
         }
       }
@@ -647,8 +648,7 @@
         "description": "blouse",
         "quantity": 1,
         "attributes": {
-          "chest": 36,
-          "size": "XXL"
+          "chest": 36
         }
       }
     ],
@@ -755,9 +755,9 @@
         "description": "geyser",
         "quantity": 3,
         "attributes": {
-          "brand": "Usha",
           "issue": "noise",
-          "room": "balcony"
+          "room": "balcony",
+          "brand": "Usha"
         }
       }
     ],
@@ -820,7 +820,7 @@
     "due_date": "2026-10-08",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.15,
     "needs_clarification": true,
     "domain": "baker"
   },
@@ -829,12 +829,18 @@
     "customer": null,
     "items": [
       {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "appliance": "fan"
+        }
+      },
+      {
         "description": "water motor",
         "quantity": 1,
         "attributes": {
-          "brand": "Havells",
           "room": "bedroom",
-          "appliance": "fan"
+          "brand": "Havells"
         }
       }
     ],
@@ -853,7 +859,7 @@
         "description": "tube light",
         "quantity": 1500,
         "attributes": {
-          "wattage": 1500
+          "wattage": "1500W"
         }
       }
     ],
@@ -872,7 +878,7 @@
         "description": "sabzi",
         "quantity": 3,
         "attributes": {
-          "meal": "breakfast"
+          "meal": "lunch"
         }
       }
     ],
@@ -914,6 +920,11 @@
     "customer": null,
     "items": [
       {
+        "description": "cookies",
+        "quantity": 1,
+        "attributes": {}
+      },
+      {
         "description": "pastry",
         "quantity": 1,
         "attributes": {
@@ -951,7 +962,7 @@
     "due_date": "2026-08-23",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.35,
     "needs_clarification": true,
     "domain": "baker"
   },
@@ -964,15 +975,15 @@
         "quantity": 1,
         "attributes": {
           "issue": "fuse blown",
-          "wattage": 40
+          "wattage": "40W"
         }
       },
       {
         "description": "inverter",
         "quantity": 3,
         "attributes": {
-          "brand": "Bajaj",
           "issue": "not working",
+          "brand": "Bajaj",
           "appliance": "inverter"
         }
       }
@@ -992,8 +1003,7 @@
         "description": "cake",
         "quantity": 1,
         "attributes": {
-          "flavour": "strawberry",
-          "weight_kg": 1
+          "flavour": "pineapple"
         }
       },
       {
@@ -1040,7 +1050,7 @@
     "due_date": "2026-09-19",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.35,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -1052,8 +1062,8 @@
         "description": "idli",
         "quantity": 4,
         "attributes": {
-          "days": 3,
-          "meal": "lunch"
+          "meal": "lunch",
+          "days": 3
         }
       },
       {
@@ -1095,13 +1105,21 @@
     "customer": "Vikram",
     "items": [
       {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "issue": "fuse blown",
+          "room": "terrace",
+          "brand": "Polycab",
+          "appliance": "fan"
+        }
+      },
+      {
         "description": "geyser",
         "quantity": 1,
         "attributes": {
-          "brand": "Polycab",
-          "issue": "fuse blown",
-          "room": "terrace",
-          "appliance": "fan"
+          "issue": "noise",
+          "appliance": "geyser"
         }
       }
     ],
@@ -1148,9 +1166,10 @@
         "description": "roti",
         "quantity": 4,
         "attributes": {
-          "jain": true,
+          "meal": "lunch",
           "spice_level": "medium",
-          "meal": "lunch"
+          "jain": true,
+          "roti_count": 4
         }
       },
       {
@@ -1221,16 +1240,16 @@
         "description": "paneer sabzi",
         "quantity": 1,
         "attributes": {
-          "spice_level": "medium",
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "spice_level": "medium"
         }
       },
       {
         "description": "sabzi",
         "quantity": 1,
         "attributes": {
-          "spice_level": "medium",
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "spice_level": "medium"
         }
       }
     ],
@@ -1281,7 +1300,7 @@
         "quantity": 1,
         "attributes": {
           "flavour": "red velvet",
-          "weight_kg": 2
+          "weight_kg": 3
         }
       },
       {
@@ -1289,7 +1308,7 @@
         "quantity": 2,
         "attributes": {
           "flavour": "red velvet",
-          "weight_kg": 2
+          "weight_kg": 3
         }
       }
     ],
@@ -1335,9 +1354,9 @@
         "description": "doorbell",
         "quantity": 4,
         "attributes": {
-          "brand": "Usha",
           "issue": "not working",
-          "wattage": 1000
+          "brand": "Usha",
+          "wattage": "1000W"
         }
       },
       {
@@ -1382,8 +1401,8 @@
         "description": "curd",
         "quantity": 2,
         "attributes": {
-          "jain": true,
-          "spice_level": "medium"
+          "spice_level": "medium",
+          "jain": true
         }
       }
     ],
@@ -1471,8 +1490,8 @@
         "attributes": {
           "chest": 42,
           "length": 48,
-          "size": "S",
-          "fabric": "velvet"
+          "fabric": "velvet",
+          "size": "S"
         }
       }
     ],
@@ -1491,9 +1510,9 @@
         "description": "curd",
         "quantity": 2,
         "attributes": {
-          "days": 8,
           "meal": "lunch",
-          "portion": "half"
+          "portion": "half",
+          "days": 8
         }
       }
     ],
@@ -1565,7 +1584,7 @@
     "due_date": "2026-08-29",
     "amount": 500,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.5,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -1585,18 +1604,16 @@
         "description": "water motor",
         "quantity": 1,
         "attributes": {
-          "brand": "Orient",
-          "appliance": "motor",
-          "issue": "slow",
-          "wattage": 100
+          "brand": "Bajaj",
+          "appliance": "motor"
         }
       }
     ],
     "due_date": "2026-10-18",
     "amount": 650,
     "references_prior_order": false,
-    "confidence": 0.9,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "electrician"
   },
   {
@@ -1646,16 +1663,16 @@
         "description": "inverter",
         "quantity": 3,
         "attributes": {
-          "wattage": 1000,
-          "appliance": "inverter"
+          "appliance": "inverter",
+          "wattage": "1000W"
         }
       },
       {
         "description": "geyser",
         "quantity": 1,
         "attributes": {
-          "brand": "Anchor",
-          "issue": "fuse blown"
+          "issue": "fuse blown",
+          "brand": "Anchor"
         }
       }
     ],
@@ -1729,8 +1746,8 @@
         "quantity": 2,
         "attributes": {
           "chest": 38,
-          "fit": "slim",
-          "color": "beige"
+          "color": "beige",
+          "fit": "slim"
         }
       },
       {
@@ -1754,9 +1771,9 @@
         "description": "curd",
         "quantity": 2,
         "attributes": {
-          "jain": true,
+          "portion": "half",
           "spice_level": "medium",
-          "portion": "half"
+          "jain": true
         }
       },
       {
@@ -1804,8 +1821,8 @@
         "description": "rajma",
         "quantity": 2,
         "attributes": {
-          "days": 2,
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "days": 2
         }
       }
     ],
@@ -1824,9 +1841,9 @@
         "description": "mcb",
         "quantity": 1,
         "attributes": {
-          "brand": "Anchor",
           "issue": "fuse blown",
-          "wattage": 2000
+          "brand": "Anchor",
+          "wattage": "2000W"
         }
       }
     ],
@@ -1845,9 +1862,9 @@
         "description": "roti",
         "quantity": 2,
         "attributes": {
-          "roti_count": 2,
+          "meal": "lunch",
           "jain": true,
-          "meal": "lunch"
+          "roti_count": 2
         }
       }
     ],
@@ -1893,18 +1910,18 @@
         "description": "khichdi",
         "quantity": 8,
         "attributes": {
-          "days": 11,
+          "meal": "dinner",
           "roti_count": 8,
-          "meal": "dinner"
+          "days": 11
         }
       },
       {
         "description": "roti",
         "quantity": 8,
         "attributes": {
-          "days": 11,
+          "meal": "dinner",
           "roti_count": 8,
-          "meal": "dinner"
+          "days": 11
         }
       }
     ],
@@ -1922,25 +1939,19 @@
       {
         "description": "sabzi",
         "quantity": 1,
-        "attributes": {
-          "roti_count": 3,
-          "meal": "dinner"
-        }
+        "attributes": {}
       },
       {
         "description": "khichdi",
         "quantity": 1,
-        "attributes": {
-          "days": 9,
-          "meal": "breakfast"
-        }
+        "attributes": {}
       },
       {
         "description": "roti",
         "quantity": 3,
         "attributes": {
-          "roti_count": 3,
-          "meal": "dinner"
+          "meal": "dinner",
+          "roti_count": 3
         }
       }
     ],
@@ -1959,8 +1970,8 @@
         "description": "sabzi",
         "quantity": 1,
         "attributes": {
-          "jain": true,
-          "meal": "dinner"
+          "meal": "dinner",
+          "jain": true
         }
       }
     ],
@@ -2007,8 +2018,8 @@
         "quantity": 1,
         "attributes": {
           "chest": 38,
-          "fit": "slim",
-          "color": "grey"
+          "color": "grey",
+          "fit": "slim"
         }
       }
     ],
@@ -2053,8 +2064,8 @@
         "description": "chole",
         "quantity": 2,
         "attributes": {
-          "spice_level": "mild",
-          "meal": "lunch"
+          "meal": "lunch",
+          "spice_level": "mild"
         }
       },
       {
@@ -2108,7 +2119,9 @@
       {
         "description": "ceiling fan",
         "quantity": 3,
-        "attributes": {}
+        "attributes": {
+          "appliance": "light"
+        }
       }
     ],
     "due_date": "2026-09-06",
@@ -2126,8 +2139,8 @@
         "description": "thali",
         "quantity": 3,
         "attributes": {
-          "days": 10,
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "days": 10
         }
       }
     ],
@@ -2190,9 +2203,8 @@
         "description": "roti",
         "quantity": 1,
         "attributes": {
-          "days": 5,
-          "meal": "lunch",
-          "roti_count": 5
+          "meal": "breakfast",
+          "days": 5
         }
       }
     ],
@@ -2211,6 +2223,13 @@
         "description": "switch board",
         "quantity": 1,
         "attributes": {}
+      },
+      {
+        "description": "tube light",
+        "quantity": 1,
+        "attributes": {
+          "appliance": "motor"
+        }
       },
       {
         "description": "water motor",
@@ -2235,8 +2254,8 @@
         "description": "rajma",
         "quantity": 3,
         "attributes": {
-          "days": 9,
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "days": 9
         }
       }
     ],
@@ -2256,7 +2275,6 @@
         "quantity": 3,
         "attributes": {
           "length": 40,
-          "size": "XXL",
           "color": "maroon"
         }
       },
@@ -2299,7 +2317,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.2,
     "needs_clarification": true,
     "domain": "electrician"
   },
@@ -2312,8 +2330,8 @@
         "quantity": 1,
         "attributes": {
           "chest": 46,
-          "fit": "slim",
-          "color": "maroon"
+          "color": "maroon",
+          "fit": "slim"
         }
       },
       {
@@ -2360,18 +2378,18 @@
         "description": "roti",
         "quantity": 6,
         "attributes": {
-          "days": 8,
+          "meal": "lunch",
           "roti_count": 6,
-          "meal": "lunch"
+          "days": 8
         }
       },
       {
         "description": "thali",
         "quantity": 1,
         "attributes": {
-          "days": 8,
+          "meal": "lunch",
           "roti_count": 6,
-          "meal": "lunch"
+          "days": 8
         }
       }
     ],
@@ -2389,7 +2407,7 @@
     "due_date": "2026-08-22",
     "amount": 1500,
     "references_prior_order": true,
-    "confidence": 0,
+    "confidence": 0.4,
     "needs_clarification": true,
     "domain": "electrician"
   },
@@ -2461,7 +2479,7 @@
         "description": "khichdi",
         "quantity": 1,
         "attributes": {
-          "meal": "breakfast",
+          "meal": "lunch",
           "portion": "half"
         }
       }
@@ -2517,7 +2535,7 @@
         "description": "socket",
         "quantity": 1,
         "attributes": {
-          "wattage": 40
+          "wattage": "40W"
         }
       },
       {
@@ -2552,7 +2570,6 @@
         "attributes": {
           "chest": 36,
           "length": 38,
-          "size": "XL",
           "color": "beige"
         }
       }
@@ -2646,8 +2663,8 @@
         "description": "geyser",
         "quantity": 3,
         "attributes": {
-          "wattage": 80,
-          "appliance": "geyser"
+          "appliance": "geyser",
+          "wattage": "80W"
         }
       }
     ],
@@ -2666,8 +2683,8 @@
         "description": "thali",
         "quantity": 2,
         "attributes": {
-          "days": 11,
-          "meal": "breakfast"
+          "meal": "breakfast",
+          "days": 11
         }
       },
       {
@@ -2711,8 +2728,7 @@
         "description": "water motor",
         "quantity": 1,
         "attributes": {
-          "issue": "leaking current",
-          "wattage": 60
+          "issue": "leaking current"
         }
       }
     ],
@@ -2733,8 +2749,8 @@
         "attributes": {
           "issue": "not working",
           "room": "hall",
-          "wattage": 40,
-          "appliance": "ac"
+          "appliance": "ac",
+          "wattage": "40W"
         }
       },
       {
@@ -2792,16 +2808,16 @@
         "description": "idli",
         "quantity": 4,
         "attributes": {
-          "roti_count": 7,
-          "meal": "lunch"
+          "meal": "lunch",
+          "roti_count": 7
         }
       },
       {
         "description": "roti",
         "quantity": 7,
         "attributes": {
-          "roti_count": 7,
-          "meal": "lunch"
+          "meal": "lunch",
+          "roti_count": 7
         }
       },
       {
@@ -2846,7 +2862,7 @@
     "due_date": "2026-10-08",
     "amount": 650,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.3,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -2928,8 +2944,9 @@
         "description": "roti",
         "quantity": 7,
         "attributes": {
+          "meal": "dinner",
           "roti_count": 7,
-          "meal": "dinner"
+          "days": 8
         }
       }
     ],
@@ -2973,17 +2990,17 @@
         "description": "wiring",
         "quantity": 1,
         "attributes": {
-          "brand": "Crompton",
-          "issue": "noise"
+          "issue": "noise",
+          "brand": "Crompton"
         }
       },
       {
         "description": "doorbell",
         "quantity": 2,
         "attributes": {
-          "brand": "Usha",
           "issue": "slow",
-          "room": "balcony"
+          "room": "balcony",
+          "brand": "Usha"
         }
       }
     ],
@@ -3001,7 +3018,7 @@
     "due_date": "2026-08-29",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.15,
     "needs_clarification": true,
     "domain": "tailor"
   },
@@ -3038,8 +3055,8 @@
         "description": "lehenga",
         "quantity": 3,
         "attributes": {
-          "sleeve": "three-quarter",
-          "fabric": "silk"
+          "fabric": "silk",
+          "sleeve": "three-quarter"
         }
       }
     ],
@@ -3057,7 +3074,7 @@
     "due_date": "2026-08-24",
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0,
+    "confidence": 0.25,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -3100,18 +3117,18 @@
         "description": "dal",
         "quantity": 2,
         "attributes": {
-          "roti_count": 8,
           "meal": "breakfast",
-          "portion": "half"
+          "portion": "half",
+          "roti_count": 8
         }
       },
       {
         "description": "roti",
         "quantity": 8,
         "attributes": {
-          "roti_count": 8,
           "meal": "breakfast",
-          "portion": "half"
+          "portion": "half",
+          "roti_count": 8
         }
       }
     ],
@@ -3131,7 +3148,7 @@
         "quantity": 80,
         "attributes": {
           "issue": "spark",
-          "wattage": 80
+          "wattage": "80W"
         }
       },
       {
@@ -3139,8 +3156,8 @@
         "quantity": 5,
         "attributes": {
           "issue": "spark",
-          "wattage": 1000,
-          "appliance": "ac"
+          "appliance": "ac",
+          "wattage": "1000W"
         }
       }
     ],
@@ -3180,7 +3197,7 @@
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.2,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -3191,7 +3208,7 @@
     "due_date": null,
     "amount": 1200,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.35,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -3242,7 +3259,13 @@
         "description": "doorbell",
         "quantity": 2,
         "attributes": {
-          "brand": "Orient",
+          "brand": "Orient"
+        }
+      },
+      {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
           "appliance": "fan"
         }
       }
@@ -3262,20 +3285,20 @@
         "description": "rajma",
         "quantity": 1,
         "attributes": {
-          "days": 6,
-          "roti_count": 2,
+          "meal": "breakfast",
           "jain": true,
-          "meal": "breakfast"
+          "roti_count": 2,
+          "days": 6
         }
       },
       {
         "description": "roti",
         "quantity": 2,
         "attributes": {
-          "days": 6,
-          "roti_count": 7,
+          "meal": "breakfast",
           "jain": true,
-          "meal": "dinner"
+          "roti_count": 2,
+          "days": 6
         }
       }
     ],
@@ -3295,8 +3318,8 @@
         "quantity": 1,
         "attributes": {
           "chest": 46,
-          "size": "S",
-          "color": "grey"
+          "color": "grey",
+          "size": "S"
         }
       },
       {
@@ -3322,8 +3345,8 @@
         "description": "water motor",
         "quantity": 1,
         "attributes": {
-          "brand": "Crompton",
           "issue": "fuse blown",
+          "brand": "Crompton",
           "appliance": "motor"
         }
       }
@@ -3392,7 +3415,7 @@
         "quantity": 3,
         "attributes": {
           "issue": "spark",
-          "wattage": 1000
+          "wattage": "1000W"
         }
       }
     ],
@@ -3473,15 +3496,15 @@
         "quantity": 3,
         "attributes": {
           "issue": "noise",
-          "wattage": 60
+          "wattage": "60W"
         }
       },
       {
         "description": "inverter",
         "quantity": 1,
         "attributes": {
-          "brand": "Polycab",
           "issue": "not working",
+          "brand": "Polycab",
           "appliance": "fridge point"
         }
       }
@@ -3520,17 +3543,17 @@
         "description": "curd",
         "quantity": 1,
         "attributes": {
-          "spice_level": "mild",
-          "meal": "dinner"
+          "meal": "dinner",
+          "spice_level": "mild"
         }
       },
       {
         "description": "khichdi",
         "quantity": 3,
         "attributes": {
-          "days": 14,
+          "meal": "dinner",
           "jain": true,
-          "meal": "dinner"
+          "days": 14
         }
       }
     ],
@@ -3557,8 +3580,8 @@
         "description": "wiring",
         "quantity": 3,
         "attributes": {
-          "brand": "Polycab",
           "issue": "leaking current",
+          "brand": "Polycab",
           "appliance": "ac"
         }
       },
@@ -3720,9 +3743,9 @@
         "description": "roti",
         "quantity": 7,
         "attributes": {
-          "roti_count": 7,
+          "meal": "lunch",
           "jain": true,
-          "meal": "lunch"
+          "roti_count": 7
         }
       }
     ],
@@ -3740,23 +3763,17 @@
       {
         "description": "bread loaf",
         "quantity": 5,
-        "attributes": {
-          "egg_free": true
-        }
+        "attributes": {}
       },
       {
         "description": "cupcake",
         "quantity": 1,
-        "attributes": {
-          "weight_kg": 1
-        }
+        "attributes": {}
       },
       {
         "description": "donut",
         "quantity": 1,
-        "attributes": {
-          "shape": "square"
-        }
+        "attributes": {}
       }
     ],
     "due_date": "2026-09-19",
@@ -3880,6 +3897,11 @@
     "customer": null,
     "items": [
       {
+        "description": "cookies",
+        "quantity": 1,
+        "attributes": {}
+      },
+      {
         "description": "muffin",
         "quantity": 1,
         "attributes": {}
@@ -3956,18 +3978,26 @@
         "description": "ac point",
         "quantity": 4,
         "attributes": {
-          "brand": "Usha",
           "issue": "slow",
-          "wattage": 80,
-          "appliance": "fridge point"
+          "brand": "Usha",
+          "appliance": "fridge point",
+          "wattage": "80W"
         }
       },
       {
         "description": "switch board",
         "quantity": 1,
         "attributes": {
-          "wattage": 80,
-          "appliance": "light"
+          "appliance": "light",
+          "wattage": "80W"
+        }
+      },
+      {
+        "description": "tube light",
+        "quantity": 1,
+        "attributes": {
+          "appliance": "light",
+          "wattage": "80W"
         }
       }
     ],
@@ -4022,8 +4052,7 @@
         "description": "wiring",
         "quantity": 3,
         "attributes": {
-          "room": "bathroom",
-          "wattage": 80
+          "room": "bathroom"
         }
       }
     ],
@@ -4062,16 +4091,15 @@
         "description": "roti",
         "quantity": 1,
         "attributes": {
-          "days": 5,
-          "roti_count": 2
+          "days": 5
         }
       },
       {
         "description": "rajma",
         "quantity": 6,
         "attributes": {
-          "days": 6,
-          "meal": "dinner"
+          "meal": "dinner",
+          "days": 6
         }
       }
     ],
@@ -4164,7 +4192,7 @@
     "due_date": "2026-09-15",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
+    "confidence": 0.15,
     "needs_clarification": true,
     "domain": "tiffin"
   },
@@ -4204,8 +4232,8 @@
         "description": "geyser",
         "quantity": 2,
         "attributes": {
-          "wattage": 80,
-          "appliance": "geyser"
+          "appliance": "geyser",
+          "wattage": "80W"
         }
       }
     ],
@@ -4242,17 +4270,12 @@
       {
         "description": "donut",
         "quantity": 1,
-        "attributes": {
-          "flavour": "butterscotch",
-          "weight_kg": 2
-        }
+        "attributes": {}
       },
       {
         "description": "cookies",
         "quantity": 2,
-        "attributes": {
-          "weight_kg": 2
-        }
+        "attributes": {}
       }
     ],
     "due_date": null,
@@ -4291,17 +4314,17 @@
         "quantity": 5,
         "attributes": {
           "chest": 34,
+          "fabric": "silk",
           "sleeve": "three-quarter",
-          "size": "M",
-          "fabric": "silk"
+          "size": "M"
         }
       },
       {
         "description": "salwar",
         "quantity": 1,
         "attributes": {
-          "size": "L",
-          "fabric": "silk"
+          "fabric": "silk",
+          "size": "L"
         }
       }
     ],
@@ -4315,12 +4338,21 @@
   {
     "id": "train-0194",
     "customer": null,
-    "items": [],
+    "items": [
+      {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "issue": "fuse blown",
+          "appliance": "fan"
+        }
+      }
+    ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
-    "needs_clarification": true,
+    "confidence": 0.7,
+    "needs_clarification": false,
     "domain": "electrician"
   },
   {
@@ -4330,26 +4362,19 @@
       {
         "description": "cookies",
         "quantity": 1,
-        "attributes": {
-          "flavour": "red velvet",
-          "egg_free": true
-        }
+        "attributes": {}
       },
       {
         "description": "donut",
         "quantity": 1,
-        "attributes": {
-          "flavour": "pineapple",
-          "egg_free": true,
-          "shape": "heart"
-        }
+        "attributes": {}
       }
     ],
     "due_date": null,
     "amount": null,
     "references_prior_order": true,
-    "confidence": 0.75,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "baker"
   },
   {
@@ -4391,12 +4416,29 @@
   {
     "id": "train-0198",
     "customer": "Farida",
-    "items": [],
+    "items": [
+      {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "room": "kitchen",
+          "appliance": "fan"
+        }
+      },
+      {
+        "description": "tube light",
+        "quantity": 1,
+        "attributes": {
+          "issue": "fuse blown",
+          "appliance": "light"
+        }
+      }
+    ],
     "due_date": "2026-10-10",
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0,
-    "needs_clarification": true,
+    "confidence": 0.85,
+    "needs_clarification": false,
     "domain": "electrician"
   },
   {
@@ -4407,9 +4449,9 @@
         "description": "roti",
         "quantity": 4,
         "attributes": {
-          "roti_count": 4,
+          "meal": "dinner",
           "spice_level": "medium",
-          "meal": "dinner"
+          "roti_count": 4
         }
       },
       {
@@ -4476,8 +4518,8 @@
         "description": "rajma",
         "quantity": 7,
         "attributes": {
-          "days": 7,
-          "meal": "dinner"
+          "meal": "dinner",
+          "days": 7
         }
       }
     ],
@@ -4495,19 +4537,15 @@
       {
         "description": "khichdi",
         "quantity": 1,
-        "attributes": {
-          "days": 3,
-          "roti_count": 5,
-          "meal": "breakfast"
-        }
+        "attributes": {}
       },
       {
         "description": "roti",
         "quantity": 5,
         "attributes": {
-          "days": 3,
+          "meal": "breakfast",
           "roti_count": 5,
-          "meal": "breakfast"
+          "days": 3
         }
       }
     ],
@@ -4598,21 +4636,24 @@
     "customer": null,
     "items": [
       {
-        "description": "tube light",
+        "description": "ceiling fan",
         "quantity": 1,
         "attributes": {
           "brand": "Usha",
-          "issue": "noise",
-          "wattage": 40,
           "appliance": "fan"
         }
+      },
+      {
+        "description": "tube light",
+        "quantity": 1,
+        "attributes": {}
       }
     ],
     "due_date": null,
     "amount": null,
     "references_prior_order": false,
-    "confidence": 0.7,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "electrician"
   },
   {
@@ -4623,9 +4664,9 @@
         "description": "roti",
         "quantity": 7,
         "attributes": {
-          "days": 8,
+          "meal": "dinner",
           "roti_count": 7,
-          "meal": "dinner"
+          "days": 8
         }
       }
     ],
@@ -4661,9 +4702,9 @@
         "description": "tube light",
         "quantity": 1,
         "attributes": {
-          "brand": "Anchor",
           "issue": "slow",
-          "room": "bathroom"
+          "room": "bathroom",
+          "brand": "Anchor"
         }
       }
     ],
@@ -4765,20 +4806,20 @@
         "description": "roti",
         "quantity": 6,
         "attributes": {
-          "days": 5,
-          "roti_count": 6,
+          "meal": "lunch",
           "jain": true,
-          "meal": "lunch"
+          "roti_count": 6,
+          "days": 5
         }
       },
       {
         "description": "thali",
         "quantity": 2,
         "attributes": {
-          "days": 5,
-          "roti_count": 6,
+          "meal": "lunch",
           "jain": true,
-          "meal": "lunch"
+          "roti_count": 6,
+          "days": 5
         }
       }
     ],
@@ -4859,8 +4900,8 @@
         "quantity": 1,
         "attributes": {
           "chest": 34,
-          "fabric": "khadi",
-          "color": "white"
+          "color": "white",
+          "fabric": "khadi"
         }
       }
     ],
@@ -4893,8 +4934,7 @@
         "description": "suit",
         "quantity": 2,
         "attributes": {
-          "chest": 34,
-          "size": "XL"
+          "chest": 34
         }
       }
     ],
@@ -5029,9 +5069,9 @@
         "description": "switch board",
         "quantity": 5,
         "attributes": {
-          "brand": "Orient",
           "issue": "short circuit",
           "room": "bathroom",
+          "brand": "Orient",
           "appliance": "fridge point"
         }
       },
@@ -5041,7 +5081,7 @@
         "attributes": {
           "issue": "slow",
           "room": "bathroom",
-          "wattage": 80
+          "wattage": "80W"
         }
       }
     ],
@@ -5193,18 +5233,12 @@
       {
         "description": "paneer sabzi",
         "quantity": 1,
-        "attributes": {
-          "days": 4,
-          "spice_level": "medium",
-          "meal": "breakfast"
-        }
+        "attributes": {}
       },
       {
         "description": "thali",
         "quantity": 5,
-        "attributes": {
-          "roti_count": 4
-        }
+        "attributes": {}
       },
       {
         "description": "roti",
@@ -5226,10 +5260,16 @@
     "customer": null,
     "items": [
       {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "appliance": "fan"
+        }
+      },
+      {
         "description": "geyser",
         "quantity": 1,
         "attributes": {
-          "issue": "leaking current",
           "appliance": "fan"
         }
       }
@@ -5237,8 +5277,8 @@
     "due_date": null,
     "amount": 200,
     "references_prior_order": false,
-    "confidence": 0.8,
-    "needs_clarification": false,
+    "confidence": 0.5,
+    "needs_clarification": true,
     "domain": "electrician"
   },
   {
@@ -5274,27 +5314,20 @@
       {
         "description": "paneer sabzi",
         "quantity": 3,
-        "attributes": {
-          "days": 13,
-          "meal": "breakfast"
-        }
+        "attributes": {}
       },
       {
         "description": "khichdi",
         "quantity": 6,
-        "attributes": {
-          "roti_count": 4,
-          "spice_level": "medium",
-          "meal": "dinner"
-        }
+        "attributes": {}
       },
       {
         "description": "roti",
         "quantity": 4,
         "attributes": {
-          "roti_count": 4,
+          "meal": "dinner",
           "spice_level": "medium",
-          "meal": "dinner"
+          "roti_count": 4
         }
       }
     ],
@@ -5340,8 +5373,8 @@
         "quantity": 2,
         "attributes": {
           "chest": 42,
-          "fabric": "velvet",
-          "color": "maroon"
+          "color": "maroon",
+          "fabric": "velvet"
         }
       }
     ],
@@ -5387,9 +5420,7 @@
       {
         "description": "dupatta",
         "quantity": 5,
-        "attributes": {
-          "size": "XXL"
-        }
+        "attributes": {}
       }
     ],
     "due_date": "2026-08-25",
@@ -5514,8 +5545,8 @@
         "quantity": 3,
         "attributes": {
           "chest": 36,
-          "sleeve": "three-quarter",
-          "color": "bottle green"
+          "color": "bottle green",
+          "sleeve": "three-quarter"
         }
       }
     ],
@@ -5536,15 +5567,15 @@
         "attributes": {
           "issue": "not working",
           "room": "bedroom",
-          "wattage": 80
+          "wattage": "80W"
         }
       },
       {
         "description": "wiring",
         "quantity": 2,
         "attributes": {
-          "brand": "Bajaj",
           "issue": "noise",
+          "brand": "Bajaj",
           "appliance": "ac"
         }
       }
@@ -5606,12 +5637,20 @@
     "customer": null,
     "items": [
       {
+        "description": "ceiling fan",
+        "quantity": 1,
+        "attributes": {
+          "issue": "not working",
+          "brand": "Havells",
+          "appliance": "fan"
+        }
+      },
+      {
         "description": "switch board",
         "quantity": 1,
         "attributes": {
-          "brand": "Havells",
           "issue": "leaking current",
-          "appliance": "fan"
+          "brand": "Orient"
         }
       }
     ],
@@ -5630,8 +5669,8 @@
         "description": "switch board",
         "quantity": 1,
         "attributes": {
-          "brand": "Havells",
-          "room": "kitchen"
+          "room": "kitchen",
+          "brand": "Havells"
         }
       }
     ],

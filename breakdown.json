@@ -1,9 +1,9 @@
 {
   "summary": {
-    "field_accuracy": 0.8112057527096226,
+    "field_accuracy": 0.7890057027595727,
     "date_accuracy": 1.0,
-    "clarification_accuracy": 0.932,
-    "test_a": 0.8731234516257735,
+    "clarification_accuracy": 0.908,
+    "test_a": 0.8550034216557436,
     "scored": 250,
     "missing": []
   },
@@ -51,10 +51,10 @@
       "id": "train-0006"
     },
     {
-      "field_accuracy": 0.875,
+      "field_accuracy": 0.5625,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.925,
+      "clarification_hit": false,
+      "total": 0.5375,
       "id": "train-0007"
     },
     {
@@ -100,10 +100,10 @@
       "id": "train-0013"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9285714285714286,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9571428571428571,
       "id": "train-0014"
     },
     {
@@ -156,10 +156,10 @@
       "id": "train-0021"
     },
     {
-      "field_accuracy": 0.875,
+      "field_accuracy": 0.5,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.925,
+      "clarification_hit": false,
+      "total": 0.5,
       "id": "train-0022"
     },
     {
@@ -184,10 +184,10 @@
       "id": "train-0025"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.875,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.925,
       "id": "train-0026"
     },
     {
@@ -198,10 +198,10 @@
       "id": "train-0027"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.6,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.76,
       "id": "train-0028"
     },
     {
@@ -212,10 +212,10 @@
       "id": "train-0029"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.8571428571428571,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9142857142857141,
       "id": "train-0030"
     },
     {
@@ -282,17 +282,17 @@
       "id": "train-0039"
     },
     {
-      "field_accuracy": 0.8333333333333334,
+      "field_accuracy": 0.6666666666666666,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8999999999999999,
+      "total": 0.8,
       "id": "train-0040"
     },
     {
-      "field_accuracy": 0.3,
+      "field_accuracy": 0.4,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.5800000000000001,
+      "total": 0.64,
       "id": "train-0041"
     },
     {
@@ -303,10 +303,10 @@
       "id": "train-0042"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.875,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.925,
       "id": "train-0043"
     },
     {
@@ -317,17 +317,17 @@
       "id": "train-0044"
     },
     {
-      "field_accuracy": 0.8333333333333334,
+      "field_accuracy": 0.75,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8999999999999999,
+      "total": 0.8499999999999999,
       "id": "train-0045"
     },
     {
-      "field_accuracy": 0.8181818181818182,
+      "field_accuracy": 1.0,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8909090909090909,
+      "total": 1.0,
       "id": "train-0046"
     },
     {
@@ -359,10 +359,10 @@
       "id": "train-0050"
     },
     {
-      "field_accuracy": 0.2777777777777778,
+      "field_accuracy": 0.5294117647058824,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.5666666666666667,
+      "total": 0.7176470588235293,
       "id": "train-0051"
     },
     {
@@ -373,10 +373,10 @@
       "id": "train-0052"
     },
     {
-      "field_accuracy": 0.5,
+      "field_accuracy": 0.47058823529411764,
       "date_hit": true,
       "clarification_hit": false,
-      "total": 0.5,
+      "total": 0.4823529411764706,
       "id": "train-0053"
     },
     {
@@ -408,10 +408,10 @@
       "id": "train-0057"
     },
     {
-      "field_accuracy": 0.6923076923076923,
+      "field_accuracy": 0.7692307692307693,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8153846153846154,
+      "total": 0.8615384615384616,
       "id": "train-0058"
     },
     {
@@ -422,10 +422,10 @@
       "id": "train-0059"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9090909090909091,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9454545454545453,
       "id": "train-0060"
     },
     {
@@ -499,10 +499,10 @@
       "id": "train-0070"
     },
     {
-      "field_accuracy": 0.5555555555555556,
+      "field_accuracy": 0.4444444444444444,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.7333333333333334,
+      "clarification_hit": false,
+      "total": 0.4666666666666667,
       "id": "train-0071"
     },
     {
@@ -520,10 +520,10 @@
       "id": "train-0073"
     },
     {
-      "field_accuracy": 0.8181818181818182,
+      "field_accuracy": 0.7272727272727273,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8909090909090909,
+      "total": 0.8363636363636364,
       "id": "train-0074"
     },
     {
@@ -569,10 +569,10 @@
       "id": "train-0080"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.875,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.925,
       "id": "train-0081"
     },
     {
@@ -597,10 +597,10 @@
       "id": "train-0084"
     },
     {
-      "field_accuracy": 0.7692307692307693,
+      "field_accuracy": 0.46153846153846156,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8615384615384616,
+      "total": 0.676923076923077,
       "id": "train-0085"
     },
     {
@@ -653,10 +653,10 @@
       "id": "train-0092"
     },
     {
-      "field_accuracy": 0.8,
+      "field_accuracy": 0.6666666666666666,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8799999999999999,
+      "total": 0.8,
       "id": "train-0093"
     },
     {
@@ -681,17 +681,17 @@
       "id": "train-0096"
     },
     {
-      "field_accuracy": 0.4666666666666667,
+      "field_accuracy": 0.5714285714285714,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.6799999999999999,
+      "total": 0.7428571428571429,
       "id": "train-0097"
     },
     {
-      "field_accuracy": 0.875,
+      "field_accuracy": 0.7,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.925,
+      "total": 0.8200000000000001,
       "id": "train-0098"
     },
     {
@@ -702,10 +702,10 @@
       "id": "train-0099"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9090909090909091,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9454545454545453,
       "id": "train-0100"
     },
     {
@@ -772,10 +772,10 @@
       "id": "train-0109"
     },
     {
-      "field_accuracy": 0.5454545454545454,
+      "field_accuracy": 0.6363636363636364,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.7272727272727273,
+      "total": 0.7818181818181817,
       "id": "train-0110"
     },
     {
@@ -793,17 +793,17 @@
       "id": "train-0112"
     },
     {
-      "field_accuracy": 0.6666666666666666,
+      "field_accuracy": 0.5555555555555556,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8,
+      "total": 0.7333333333333334,
       "id": "train-0113"
     },
     {
-      "field_accuracy": 0.9230769230769231,
+      "field_accuracy": 0.8461538461538461,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.9538461538461538,
+      "total": 0.9076923076923076,
       "id": "train-0114"
     },
     {
@@ -828,10 +828,10 @@
       "id": "train-0117"
     },
     {
-      "field_accuracy": 0.8571428571428571,
+      "field_accuracy": 0.7142857142857143,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.9142857142857141,
+      "total": 0.8285714285714285,
       "id": "train-0118"
     },
     {
@@ -849,17 +849,17 @@
       "id": "train-0120"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.8571428571428571,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9142857142857141,
       "id": "train-0121"
     },
     {
-      "field_accuracy": 0.8461538461538461,
+      "field_accuracy": 0.7692307692307693,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.9076923076923076,
+      "total": 0.8615384615384616,
       "id": "train-0122"
     },
     {
@@ -982,10 +982,10 @@
       "id": "train-0139"
     },
     {
-      "field_accuracy": 0.9166666666666666,
+      "field_accuracy": 0.75,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.95,
+      "total": 0.8499999999999999,
       "id": "train-0140"
     },
     {
@@ -1024,10 +1024,10 @@
       "id": "train-0145"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.6666666666666666,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.8,
       "id": "train-0146"
     },
     {
@@ -1066,10 +1066,10 @@
       "id": "train-0151"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.94,
       "id": "train-0152"
     },
     {
@@ -1094,10 +1094,10 @@
       "id": "train-0155"
     },
     {
-      "field_accuracy": 0.9166666666666666,
+      "field_accuracy": 0.8333333333333334,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.95,
+      "total": 0.8999999999999999,
       "id": "train-0156"
     },
     {
@@ -1178,10 +1178,10 @@
       "id": "train-0167"
     },
     {
-      "field_accuracy": 0.8571428571428571,
+      "field_accuracy": 0.6428571428571429,
       "date_hit": true,
       "clarification_hit": false,
-      "total": 0.7142857142857142,
+      "total": 0.5857142857142857,
       "id": "train-0168"
     },
     {
@@ -1220,10 +1220,10 @@
       "id": "train-0173"
     },
     {
-      "field_accuracy": 0.6923076923076923,
+      "field_accuracy": 0.6,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8153846153846154,
+      "total": 0.76,
       "id": "train-0174"
     },
     {
@@ -1241,10 +1241,10 @@
       "id": "train-0176"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.7333333333333333,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.8399999999999999,
       "id": "train-0177"
     },
     {
@@ -1262,10 +1262,10 @@
       "id": "train-0179"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.8571428571428571,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9142857142857141,
       "id": "train-0180"
     },
     {
@@ -1276,10 +1276,10 @@
       "id": "train-0181"
     },
     {
-      "field_accuracy": 0.6,
+      "field_accuracy": 0.5333333333333333,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.76,
+      "total": 0.72,
       "id": "train-0182"
     },
     {
@@ -1339,10 +1339,10 @@
       "id": "train-0190"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.7,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.8200000000000001,
       "id": "train-0191"
     },
     {
@@ -1360,17 +1360,17 @@
       "id": "train-0193"
     },
     {
-      "field_accuracy": 0.42857142857142855,
+      "field_accuracy": 0.3333333333333333,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.6571428571428571,
+      "clarification_hit": false,
+      "total": 0.4,
       "id": "train-0194"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.5833333333333334,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 1.0,
+      "clarification_hit": false,
+      "total": 0.55,
       "id": "train-0195"
     },
     {
@@ -1388,10 +1388,10 @@
       "id": "train-0197"
     },
     {
-      "field_accuracy": 0.375,
+      "field_accuracy": 0.5,
       "date_hit": true,
-      "clarification_hit": false,
-      "total": 0.425,
+      "clarification_hit": true,
+      "total": 0.7,
       "id": "train-0198"
     },
     {
@@ -1416,10 +1416,10 @@
       "id": "train-0201"
     },
     {
-      "field_accuracy": 0.5384615384615384,
+      "field_accuracy": 0.3076923076923077,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.723076923076923,
+      "total": 0.5846153846153846,
       "id": "train-0202"
     },
     {
@@ -1444,10 +1444,10 @@
       "id": "train-0205"
     },
     {
-      "field_accuracy": 0.42857142857142855,
+      "field_accuracy": 0.6363636363636364,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.6571428571428571,
+      "clarification_hit": false,
+      "total": 0.5818181818181818,
       "id": "train-0206"
     },
     {
@@ -1521,10 +1521,10 @@
       "id": "train-0216"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9230769230769231,
       "date_hit": true,
       "clarification_hit": false,
-      "total": 0.8,
+      "total": 0.7538461538461538,
       "id": "train-0217"
     },
     {
@@ -1563,10 +1563,10 @@
       "id": "train-0222"
     },
     {
-      "field_accuracy": 0.9285714285714286,
+      "field_accuracy": 0.8571428571428571,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.9571428571428571,
+      "total": 0.9142857142857141,
       "id": "train-0223"
     },
     {
@@ -1612,17 +1612,17 @@
       "id": "train-0229"
     },
     {
-      "field_accuracy": 0.8125,
+      "field_accuracy": 0.5625,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.8875,
+      "total": 0.7375,
       "id": "train-0230"
     },
     {
       "field_accuracy": 0.3333333333333333,
       "date_hit": true,
-      "clarification_hit": true,
-      "total": 0.6000000000000001,
+      "clarification_hit": false,
+      "total": 0.4,
       "id": "train-0231"
     },
     {
@@ -1633,10 +1633,10 @@
       "id": "train-0232"
     },
     {
-      "field_accuracy": 0.8571428571428571,
+      "field_accuracy": 0.5,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 0.9142857142857141,
+      "total": 0.7,
       "id": "train-0233"
     },
     {
@@ -1661,10 +1661,10 @@
       "id": "train-0236"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9090909090909091,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9454545454545453,
       "id": "train-0237"
     },
     {
@@ -1710,10 +1710,10 @@
       "id": "train-0243"
     },
     {
-      "field_accuracy": 1.0,
+      "field_accuracy": 0.9230769230769231,
       "date_hit": true,
       "clarification_hit": true,
-      "total": 1.0,
+      "total": 0.9538461538461538,
       "id": "train-0244"
     },
     {
@@ -1731,10 +1731,10 @@
       "id": "train-0246"
     },
     {
-      "field_accuracy": 0.5,
+      "field_accuracy": 0.75,
       "date_hit": true,
       "clarification_hit": false,
-      "total": 0.5,
+      "total": 0.6499999999999999,
       "id": "train-0247"
     },
     {

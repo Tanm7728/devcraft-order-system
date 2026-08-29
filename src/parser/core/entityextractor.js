@@ -1,10 +1,10 @@
 /**
- * entityextractor.js
- * Domain-aware entity and attribute extraction matching DevCraft schema and vocabulary.
+ * entityextractor.js — NLP-Lite & Domain-Aware Entity & Attribute Extractor
  * Pure JS — zero network calls.
  */
 
 import { convertDevanagariDigits, wordToNumber } from '../utils/numberWords.js';
+import { NON_CUSTOMER_WORDS } from '../utils/nlp.js';
 
 export const DOMAIN_VOCABULARY = {
   tailor: ['color', 'fabric', 'chest', 'waist', 'length', 'sleeve', 'size', 'fit'],
@@ -22,7 +22,7 @@ export const KNOWN_CUSTOMERS = [
 export const ALL_ITEMS_MAP = {
   // Electrician
   'ac point': ['ac point', 'एसी पॉइंट'],
-  'ceiling fan': ['ceiling fan', 'pankha', 'पंखा', 'सीलिंग फैन'],
+  'ceiling fan': ['ceiling fan', 'pankha', 'पंखा', 'सीलिंग फैन', 'fan'],
   'doorbell': ['doorbell', 'bell', 'ghanti', 'घंटी', 'डोरबेल'],
   'exhaust fan': ['exhaust fan', 'exhaust', 'एग्जॉस्ट फैन'],
   'geyser': ['geyser', 'gizer', 'गीजर'],
@@ -30,7 +30,7 @@ export const ALL_ITEMS_MAP = {
   'mcb': ['mcb', 'एमसीबी'],
   'socket': ['socket', 'सॉकेट'],
   'switch board': ['switch board', 'switchboard', 'स्विच बोर्ड', 'स्विचबोर्ड'],
-  'tube light': ['tube light', 'tubelight', 'ट्यूब लाइट'],
+  'tube light': ['tube light', 'tubelight', 'ट्यूब लाइट', 'light'],
   'water motor': ['water motor', 'motor', 'पानी की मोटर', 'मोटर'],
   'wiring': ['wiring', 'वायरिंग'],
 
@@ -185,7 +185,7 @@ export function referencesPriorOrder(message) {
 }
 
 /**
- * Automatically detects the business domain from unstructured customer messages.
+ * Automatically infers the business domain from unstructured customer messages.
  * @param {string} message
  * @returns {'tailor' | 'tiffin' | 'electrician' | 'baker'}
  */
@@ -195,51 +195,55 @@ export function detectDomain(message) {
 
   const scores = { tailor: 0, tiffin: 0, electrician: 0, baker: 0 };
 
-  // Domain 1: Tailor
-  const tailorKeywords = [
-    'blouse', 'kurta', 'kurti', 'pajama', 'pyjama', 'pant', 'pent', 'shirt', 'salwar', 'lehenga',
-    'lehnga', 'sherwani', 'suit', 'waistcoat', 'koti', 'dupatta', 'kameez', 'trouser', 'vest',
-    'ब्लाउज', 'कुर्ता', 'कुर्ती', 'पजामा', 'पैजामा', 'पेंट', 'पैंट', 'कमीज', 'शर्ट', 'सलवार', 'लहंगा', 'शेरवानी', 'सूट', 'कोटी', 'दुपट्टा',
-    'chest', 'chhati', 'waist', 'kamar', 'length', 'lambai', 'lambaai', 'sleeve', 'aasteen', 'silna', 'silwana', 'silana',
-    'silaai', 'stitching', 'stitch', 'fabric', 'kapda', 'kapde', 'cotton', 'silk', 'linen', 'georgette', 'naap', 'naapna',
-    'alteration', 'alter', 'fitting', 'slim fit', 'loose'
-  ];
-  for (const kw of tailorKeywords) {
-    if (lower.includes(kw)) scores.tailor += 3;
+  // Score against items in DOMAIN_ITEMS
+  for (const [dom, items] of Object.entries(DOMAIN_ITEMS)) {
+    for (const it of items) {
+      if (lower.includes(it)) scores[dom] += 4;
+      const aliases = ALL_ITEMS_MAP[it] || [];
+      for (const al of aliases) {
+        if (lower.includes(al)) scores[dom] += 4;
+      }
+    }
   }
 
-  // Domain 2: Tiffin
+  // Tailor keywords
+  const tailorKeywords = [
+    'silna', 'silwana', 'silana', 'silaai', 'stitching', 'stitch', 'fabric', 'kapda', 'kapde',
+    'cotton', 'silk', 'linen', 'georgette', 'naap', 'naapna', 'alteration', 'alter', 'fitting',
+    'chest', 'chhati', 'waist', 'kamar', 'length', 'lambai', 'sleeve', 'aasteen'
+  ];
+  for (const kw of tailorKeywords) {
+    if (lower.includes(kw)) scores.tailor += 2;
+  }
+
+  // Tiffin keywords
   const tiffinKeywords = [
     'tiffin', 'lunch', 'dinner', 'dabba', 'meal', 'roti', 'chapati', 'phulka', 'dal', 'daal',
     'sabzi', 'sabji', 'bhaji', 'rice', 'chawal', 'rajma', 'chole', 'paneer', 'paratha', 'poha',
-    'idli', 'khichdi', 'curd', 'dahi', 'thali', 'टिफिन', 'लंच', 'डिनर', 'डब्बा', 'रोटी', 'दाल', 'सब्जी', 'चावल', 'राजमा', 'छोले', 'पनीर', 'पराठा', 'पोहा', 'इडली', 'खिचड़ी', 'दही', 'थाली',
-    'jain', 'swaminarayan', 'kam teekha', 'teekha', 'spice', 'spicy', 'mirchi', 'portion', 'dopahar', 'nashta', 'khana', 'pack'
+    'idli', 'khichdi', 'dahi', 'thali', 'jain', 'swaminarayan', 'kam teekha', 'teekha', 'spice', 'spicy', 'khana'
   ];
   for (const kw of tiffinKeywords) {
-    if (lower.includes(kw)) scores.tiffin += 3;
+    if (lower.includes(kw)) scores.tiffin += 2;
   }
 
-  // Domain 3: Electrician
+  // Electrician keywords
   const electricianKeywords = [
-    'geyser', 'gizer', 'fan', 'pankha', 'exhaust', 'wiring', 'wire', 'socket', 'switch', 'switchboard',
-    'mcb', 'inverter', 'motor', 'water motor', 'tubelight', 'tube light', 'bulb', 'ac point', 'doorbell', 'bell', 'ghanti',
-    'गीजर', 'पंखा', 'सीलिंग फैन', 'एग्जॉस्ट', 'वायरिंग', 'सॉकेट', 'स्विच', 'स्विचबोर्ड', 'इन्वर्टर', 'मोटर', 'ट्यूब लाइट', 'घंटी', 'डोरबेल',
-    'short circuit', 'short', 'spark', 'current', 'jhatka', 'fuse', 'watt', 'havells', 'crompton', 'bajaj', 'usha', 'anchor',
-    'orient', 'polycab', 'philips', 'syska', 'chal nahi raha', 'band hai', 'kharab'
+    'geyser', 'fan', 'pankha', 'exhaust', 'wiring', 'wire', 'socket', 'switch', 'switchboard',
+    'mcb', 'inverter', 'motor', 'tubelight', 'ac point', 'short circuit', 'spark', 'current',
+    'jhatka', 'fuse', 'watt', 'havells', 'crompton', 'bajaj', 'usha', 'anchor', 'chal nahi raha', 'kharab'
   ];
   for (const kw of electricianKeywords) {
-    if (lower.includes(kw)) scores.electrician += 3;
+    if (lower.includes(kw)) scores.electrician += 2;
   }
 
-  // Domain 4: Baker
+  // Baker keywords
   const bakerKeywords = [
-    'cake', 'birthday cake', 'bday cake', 'pastry', 'brownie', 'cupcake', 'cookies', 'cookie', 'bread loaf',
-    'bread', 'muffin', 'donut', 'doughnut', 'cheesecake', 'केक', 'बर्थडे केक', 'पेस्ट्री', 'ब्राउनी', 'कपकेक', 'कुकीज़', 'ब्रेड', 'मफिन', 'डोनट', 'चीज़केक',
+    'cake', 'pastry', 'brownie', 'cupcake', 'cookies', 'cookie', 'bread', 'muffin', 'donut', 'cheesecake',
     'flavour', 'flavor', 'chocolate', 'vanilla', 'strawberry', 'pineapple', 'black forest', 'red velvet',
-    'butterscotch', 'eggless', 'egg free', 'bina ande', 'ande bina', 'kg', 'kilo', 'pound', 'tier', 'message on cake', 'happy birthday'
+    'butterscotch', 'eggless', 'egg free', 'bina ande', 'kg', 'pound', 'tier', 'happy birthday'
   ];
   for (const kw of bakerKeywords) {
-    if (lower.includes(kw)) scores.baker += 3;
+    if (lower.includes(kw)) scores.baker += 2;
   }
 
   let bestDomain = 'tailor';
@@ -279,70 +283,76 @@ export function extractAmount(message) {
 
 const CUSTOMER_DECOY_PATTERN = /((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+(?:ke\s+liye\s+nahi|nahi|ke\s+liye\s+nahin)[,\s]+((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+ke\s+liye/iu;
 
+/**
+ * Cleans extracted candidate customer name.
+ */
+function cleanCustomerCandidate(raw) {
+  if (!raw) return null;
+  let name = raw.trim();
+  const lower = name.toLowerCase();
+
+  // If candidate is a stop word (e.g. 'Bhaiya', 'Order')
+  if (NON_CUSTOMER_WORDS.has(lower) || wordToNumber(lower) !== null) {
+    return null;
+  }
+
+  // Check known customers
+  for (const kn of KNOWN_CUSTOMERS) {
+    if (kn.toLowerCase() === lower || lower.startsWith(kn.toLowerCase().split(' ')[0])) {
+      return kn;
+    }
+  }
+
+  // Return formatted name
+  return name;
+}
+
 export function extractCustomer(message) {
   if (!message) return null;
 
   // 1. Decoy pattern: "A ke liye nahi, B ke liye"
   const decoyMatch = message.match(CUSTOMER_DECOY_PATTERN);
   if (decoyMatch && decoyMatch[2]) {
-    const raw = decoyMatch[2].trim();
-    for (const kn of KNOWN_CUSTOMERS) {
-      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
-        return kn;
-      }
-    }
-    return raw;
+    const res = cleanCustomerCandidate(decoyMatch[2]);
+    if (res) return res;
   }
 
-  // 2. "Ram bol raha hu", "Pooja didi bol rahi hu", "Suresh bhai bol rahe hain"
-  const bolMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mai[n]?\s+|me\s+|mai\s+)?((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi|sir|madam))?)\s+bol\s+(?:raha|rahi|rahe)\s+(?:hu|hoon|hun|hai|hain)\b/iu);
+  // 2. "Ram bol raha hu", "Ram bol rha hai", "Pooja bol rahi"
+  const bolMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mai[n]?\s+|me\s+|mai\s+)?((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi|sir|madam))?)\s+bol\s+(?:raha|rahi|rahe|rha|rhi|rh)\s*(?:hu|hoon|hun|hai|hain)?\b/iu);
   if (bolMatch && bolMatch[1]) {
-    const raw = bolMatch[1].trim();
-    for (const kn of KNOWN_CUSTOMERS) {
-      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
-        return kn;
-      }
-    }
-    return raw;
+    const res = cleanCustomerCandidate(bolMatch[1]);
+    if (res) return res;
   }
 
-  // 3. "Amit Sharma here", "Rahul this side"
+  // 3. "from Ram", "from: Ram", "this is Ram"
+  const fromMatch = message.match(/(?:^|[.,!?;]|\s+)(?:from|this is)\s*[:]?\s*((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\b/iu);
+  if (fromMatch && fromMatch[1]) {
+    const res = cleanCustomerCandidate(fromMatch[1]);
+    if (res) return res;
+  }
+
+  // 4. "Amit Sharma here", "Rahul this side"
   const hereMatch = message.match(/(?:^|[.,!?;]|\s+)((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\s+(?:here|this side)\b/iu);
   if (hereMatch && hereMatch[1]) {
-    const raw = hereMatch[1].trim();
-    for (const kn of KNOWN_CUSTOMERS) {
-      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
-        return kn;
-      }
-    }
-    return raw;
+    const res = cleanCustomerCandidate(hereMatch[1]);
+    if (res) return res;
   }
 
-  // 4. "Sunita Rao ke liye...", "Meena aunty ke liye..."
+  // 5. "Sunita Rao ke liye...", "Meena aunty ke liye..."
   const keLiyeMatch = message.match(/(?:^|[.,!?;]|\s+)((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+(?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+)?(?:\s+(?:didi|bhaiya|bhai|uncle|aunty|ji|bhabhi))?)\s+ke\s+liye\b/iu);
   if (keLiyeMatch && keLiyeMatch[1]) {
-    const raw = keLiyeMatch[1].trim();
-    for (const kn of KNOWN_CUSTOMERS) {
-      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
-        return kn;
-      }
-    }
-    return raw;
+    const res = cleanCustomerCandidate(keLiyeMatch[1]);
+    if (res) return res;
   }
 
-  // 5. "Mera naam Rohit hai", "Name: Suresh"
+  // 6. "Mera naam Rohit hai", "Name: Suresh"
   const nameMatch = message.match(/(?:^|[.,!?;]|\s+)(?:mera\s+naam|name|customer)\s*[:-]?\s*((?:\p{Lu}|\p{Lo})[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)?)\b/iu);
   if (nameMatch && nameMatch[1]) {
-    const raw = nameMatch[1].trim();
-    for (const kn of KNOWN_CUSTOMERS) {
-      if (kn.toLowerCase() === raw.toLowerCase() || raw.toLowerCase().startsWith(kn.toLowerCase().split(' ')[0])) {
-        return kn;
-      }
-    }
-    return raw;
+    const res = cleanCustomerCandidate(nameMatch[1]);
+    if (res) return res;
   }
 
-  // 6. Known customers dictionary with negation check
+  // 7. Known customers dictionary lookup with negation guard
   for (const name of KNOWN_CUSTOMERS) {
     const re = new RegExp(`(?:^|[\\s,;!?])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s,;!?]|$)`, 'i');
     if (re.test(message)) {
@@ -382,146 +392,165 @@ export function extractSegmentAttributes(text, domain) {
       if (num !== null) attrs.length = num;
     }
 
-    for (const [k, v] of Object.entries(FITS)) {
-      if (new RegExp(`\\b${k}\\s*(?:fit)?\\b`, 'i').test(lower)) {
-        attrs.fit = v;
+    for (const c of COLORS) {
+      const re = new RegExp(`(?:^|[\\s,;!?])${c}(?=[\\s,;!?]|$)`, 'i');
+      if (re.test(text)) {
+        if (c === 'laal') attrs.color = 'red';
+        else if (c === 'neela') attrs.color = 'blue';
+        else if (c === 'safed') attrs.color = 'white';
+        else if (c === 'kala') attrs.color = 'black';
+        else if (c === 'hara') attrs.color = 'green';
+        else if (c === 'peela') attrs.color = 'yellow';
+        else attrs.color = c;
         break;
       }
     }
 
-    for (const [k, v] of Object.entries(SLEEVES)) {
-      if (new RegExp(`\\b${k.replace('/', '\\/')}\\b`, 'i').test(lower) || lower.includes(k)) {
-        attrs.sleeve = v;
+    for (const f of FABRICS) {
+      const re = new RegExp(`(?:^|[\\s,;!?])${f}(?=[\\s,;!?]|$)`, 'i');
+      if (re.test(text)) {
+        attrs.fabric = f;
+        break;
+      }
+    }
+
+    for (const [sKey, sVal] of Object.entries(SLEEVES)) {
+      if (lower.includes(sKey)) {
+        attrs.sleeve = sVal;
+        break;
+      }
+    }
+
+    for (const [fKey, fVal] of Object.entries(FITS)) {
+      const re = new RegExp(`\\b${fKey}\\s+fit\\b|\\b${fKey}\\b`, 'i');
+      if (re.test(text)) {
+        attrs.fit = fVal;
         break;
       }
     }
 
     for (const sz of SIZES) {
-      if (new RegExp(`\\b(?:size\\s*)?${sz}\\b`, 'i').test(text)) {
+      const re = new RegExp(`(?:size|साइज़)\\s*[:-]?\\s*${sz}\\b|\\b${sz}\\s*size\\b`, 'i');
+      if (re.test(text)) {
         attrs.size = sz;
-        break;
-      }
-    }
-
-    for (const fab of FABRICS) {
-      if (new RegExp(`\\b${fab}\\b`, 'i').test(lower)) {
-        attrs.fabric = fab;
-        break;
-      }
-    }
-
-    for (const col of COLORS) {
-      if (new RegExp(`\\b${col}\\b`, 'i').test(lower)) {
-        attrs.color = col;
-        break;
-      }
-    }
-  }
-
-  if (!domain || domain === 'electrician') {
-    for (const br of BRANDS) {
-      if (new RegExp(`\\b${br}\\b`, 'i').test(text)) {
-        attrs.brand = br;
-        break;
-      }
-    }
-
-    for (const [k, v] of Object.entries(ISSUES)) {
-      if (lower.includes(k)) {
-        attrs.issue = v;
-        break;
-      }
-    }
-
-    for (const rm of ROOMS) {
-      if (new RegExp(`\\b${rm}\\b`, 'i').test(lower)) {
-        attrs.room = rm;
-        break;
-      }
-    }
-
-    const wattM = converted.match(/\b(\d+|athais|tees|chalis|saath|assi|sau)\s*(?:watt|w|wattage)\b/i);
-    if (wattM) {
-      const num = wordToNumber(wattM[1]);
-      if (num !== null) attrs.wattage = num;
-    }
-
-    for (const app of APPLIANCES) {
-      const appNegated = new RegExp(`(?:${app}\\s+(?:nahi|nahin|not)|(?:nahi|nahin|not)\\s+${app})`, 'i').test(lower);
-      if (!appNegated && new RegExp(`\\b${app}\\b`, 'i').test(lower)) {
-        attrs.appliance = app;
         break;
       }
     }
   }
 
   if (!domain || domain === 'tiffin') {
-    const daysM = converted.match(/\b(\d+|ek|do|teen|chaar|paanch|chhah|saat|das)\s*(?:din|days|day)\b/i);
-    if (daysM) {
-      const num = wordToNumber(daysM[1]);
-      if (num !== null) attrs.days = num;
+    for (const [mKey, mVal] of Object.entries(MEALS)) {
+      if (lower.includes(mKey)) {
+        attrs.meal = mVal;
+        break;
+      }
     }
 
-    const rotiM = converted.match(/\b(\d+|ek|do|teen|chaar|paanch|chhah|saat|das)\s*(?:roti|chapati|phulka)\b/i);
+    for (const [pKey, pVal] of Object.entries(PORTIONS)) {
+      if (lower.includes(pKey)) {
+        attrs.portion = pVal;
+        break;
+      }
+    }
+
+    for (const [spKey, spVal] of Object.entries(SPICE_LEVELS)) {
+      if (lower.includes(spKey)) {
+        attrs.spice_level = spVal;
+        break;
+      }
+    }
+
+    if (/\bjain\b|जैन/i.test(text)) {
+      attrs.jain = true;
+    }
+
+    const rotiM = converted.match(/(\d+|ek|do|teen|chaar|char|paanch|chhe|chhah|saat|aath|das|barah|एक|दो|तीन|चार|पांच|पाँच|छह|सात|आठ|दस)\s*(?:roti|rotis|phulka|chapati|रोटी)/i);
     if (rotiM) {
       const num = wordToNumber(rotiM[1]);
       if (num !== null) attrs.roti_count = num;
     }
 
-    if (/\bjain\b/i.test(lower) || /जैन/u.test(text)) {
-      attrs.jain = true;
+    const daysM = converted.match(/(\d+|ek|do|teen|chaar|char|paanch|panch|chhe|saat|aath|das|barah|ek\s+mahina|1\s+mahina)\s*(?:din|days|दिन)/i);
+    if (daysM) {
+      let num = wordToNumber(daysM[1]);
+      if (daysM[1].includes('mahina')) num = 30;
+      if (num !== null) attrs.days = num;
     }
+  }
 
-    for (const [k, v] of Object.entries(SPICE_LEVELS)) {
-      if (lower.includes(k)) {
-        attrs.spice_level = v;
+  if (!domain || domain === 'electrician') {
+    for (const [issKey, issVal] of Object.entries(ISSUES)) {
+      if (lower.includes(issKey)) {
+        attrs.issue = issVal;
         break;
       }
     }
 
-    for (const [k, v] of Object.entries(MEALS)) {
-      if (new RegExp(`\\b${k}\\b`, 'i').test(lower)) {
-        attrs.meal = v;
+    for (const r of ROOMS) {
+      if (lower.includes(r)) {
+        attrs.room = r;
         break;
       }
     }
 
-    for (const [k, v] of Object.entries(PORTIONS)) {
-      if (new RegExp(`\\b${k}\\b`, 'i').test(lower)) {
-        attrs.portion = v;
+    for (const b of BRANDS) {
+      if (lower.includes(b.toLowerCase())) {
+        attrs.brand = b;
         break;
       }
+    }
+
+    for (const app of APPLIANCES) {
+      const re = new RegExp(`\\b${app}\\b`, 'i');
+      if (re.test(text)) {
+        attrs.appliance = app;
+        break;
+      }
+    }
+
+    const wattM = converted.match(/(\d+)\s*(?:w|watt|watts|वाट)\b/i);
+    if (wattM) {
+      attrs.wattage = `${wattM[1]}W`;
     }
   }
 
   if (!domain || domain === 'baker') {
-    for (const flv of FLAVOURS) {
-      if (lower.includes(flv)) {
-        attrs.flavour = flv;
+    for (const fl of FLAVOURS) {
+      if (lower.includes(fl)) {
+        attrs.flavour = fl;
         break;
       }
     }
 
-    const wtM = converted.match(/\b(\d+(?:\.\d+)?|half|aadha|dedh|dhai)\s*(?:kg|kilo|pound)?\b/i);
-    if (wtM && (/\bkg\b/i.test(lower) || /\bkilo\b/i.test(lower) || /\bweight\b/i.test(lower) || /\b(\d+(?:\.\d+)?)\s*kg\b/i.test(lower))) {
-      const num = wordToNumber(wtM[1]);
-      if (num !== null) attrs.weight_kg = num;
+    const kgM = converted.match(/(\d+(?:\.\d+)?|\d+\s*\/\s*\d+|aadha|half|ek|do|teen|char|paanch|एक|दो|तीन|चार|पाँच|पांच)\s*(?:kg|kilo|किलो|pound|पाउंड)/i);
+    if (kgM) {
+      let val;
+      if (kgM[1] === 'aadha' || kgM[1] === 'half' || kgM[1] === '1/2') val = 0.5;
+      else if (kgM[1] === '1.5' || kgM[1] === 'dedh') val = 1.5;
+      else val = wordToNumber(kgM[1]) || parseFloat(kgM[1]);
+      if (val !== null && !isNaN(val)) attrs.weight_kg = val;
     }
 
-    if (/\begg\s*less|egg\s*free|bina\s+ande|bina\s+anda\b/i.test(lower)) {
+    if (/\b(?:eggless|egg-free|egg\s+free|bina\s+ande|ande\s+ke\s+bina|बिना\s+अंडे|एगलेस)\b/i.test(text)) {
       attrs.egg_free = true;
     }
 
-    const tierM = converted.match(/\b(\d+)\s*(?:tier|step|manzil)\b/i);
+    const tierM = converted.match(/(\d+|do|teen|chaar|char|2|3|4)\s*tier\b/i);
     if (tierM) {
-      attrs.tier = parseInt(tierM[1], 10);
+      const num = wordToNumber(tierM[1]) || parseInt(tierM[1], 10);
+      if (num) attrs.tier = num;
     }
 
-    for (const shp of SHAPES) {
-      if (lower.includes(shp)) {
-        attrs.shape = shp;
+    for (const sh of SHAPES) {
+      if (lower.includes(sh)) {
+        attrs.shape = sh;
         break;
       }
+    }
+
+    const msgM = text.match(/(?:message|likhna|likh\s+dena|likh\s+do|naam\s+likhna)\s*[:]?\s*["']?([^"',.\n]+)["']?/i);
+    if (msgM && msgM[1]) {
+      attrs.message_on_cake = msgM[1].trim();
     }
   }
 
@@ -537,6 +566,20 @@ export function extractSegmentAttributes(text, domain) {
   }
 
   return attrs;
+}
+
+export function isMissingBlockingAttribute(items, domain) {
+  if (!items || items.length === 0) return false;
+
+  if (domain === 'baker') {
+    return items.every(item => !item.attributes || !item.attributes.flavour);
+  }
+
+  if (domain === 'electrician') {
+    return items.every(item => !item.attributes || !item.attributes.issue);
+  }
+
+  return false;
 }
 
 export function extractItemsAndAttributes(rawMessage, domain) {
@@ -564,7 +607,7 @@ export function extractItemsAndAttributes(rawMessage, domain) {
       if (validItemsForDomain && !validItemsForDomain.has(canonicalDesc)) continue;
 
       for (const alias of aliases) {
-        const aliasRe = new RegExp(`(?:^|[\\s,.;!?])${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s,.;!?]|$)`, 'i');
+        const aliasRe = new RegExp(`(?:^|[\\s,.;!?])${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:s|es)?(?=[\\s,.;!?]|$)`, 'i');
         if (aliasRe.test(cl)) {
           const negRe = new RegExp(`(?:${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+(?:nahi|nahin|not)|(?:nahi|nahin|not)\\s+${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i');
           if (negRe.test(cl)) continue;
@@ -586,56 +629,64 @@ export function extractItemsAndAttributes(rawMessage, domain) {
               if (num !== null && num >= 1) qty = Math.round(num);
             }
 
+            const itemAttrs = extractSegmentAttributes(cl, domain);
+
             seenCanonical.set(canonicalDesc, {
+              description: canonicalDesc,
               quantity: qty,
-              clauses: [cl]
+              attributes: itemAttrs
             });
-          } else {
-            seenCanonical.get(canonicalDesc).clauses.push(cl);
+            break;
           }
+        }
+      }
+    }
+  }
+
+  // Fallback: full string scan if clauses missed an item
+  if (seenCanonical.size === 0) {
+    for (const [canonicalDesc, aliases] of Object.entries(ALL_ITEMS_MAP)) {
+      if (validItemsForDomain && !validItemsForDomain.has(canonicalDesc)) continue;
+
+      for (const alias of aliases) {
+        const aliasRe = new RegExp(`(?:^|[\\s,.;!?])${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:s|es)?(?=[\\s,.;!?]|$)`, 'i');
+        if (aliasRe.test(rawMessage)) {
+          const negRe = new RegExp(`(?:${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+(?:nahi|nahin|not)|(?:nahi|nahin|not)\\s+${alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i');
+          if (negRe.test(rawMessage)) continue;
+
+          let qty = 1;
+          const matchIdx = rawMessage.search(aliasRe);
+          const beforeText = rawMessage.slice(0, matchIdx);
+          const qtyM = beforeText.match(/(\d+|ek|do|teen|chaar|char|paanch|panch|chhah|che|chhe|saat|aath|nau|das|barah|darjan|dozen|दर्जन|एक|दो|तीन|चार|पाँच|पांच|छह|सात|आठ|नौ|दस)\s*(?:bhar|भर)?\s*$/i);
+          if (qtyM) {
+            const num = wordToNumber(qtyM[1]);
+            if (num !== null && num >= 1) qty = Math.round(num);
+          }
+
+          const attrs = extractSegmentAttributes(rawMessage, domain);
+          seenCanonical.set(canonicalDesc, {
+            description: canonicalDesc,
+            quantity: qty,
+            attributes: attrs
+          });
           break;
         }
       }
     }
   }
 
-  const globalAttrs = extractSegmentAttributes(rawMessage, domain);
-  const totalItemCount = seenCanonical.size;
-
-  const results = [];
-  for (const [canonicalDesc, data] of seenCanonical.entries()) {
-    let itemAttrs = {};
-    if (totalItemCount === 1) {
-      // Single item: all global attributes belong to this item
-      itemAttrs = { ...globalAttrs };
-    } else {
-      // Multiple items: combine clause-specific attributes
-      for (const cl of data.clauses) {
-        const clAttrs = extractSegmentAttributes(cl, domain);
-        itemAttrs = { ...itemAttrs, ...clAttrs };
-      }
-    }
-
-    results.push({
-      description: canonicalDesc,
-      quantity: data.quantity,
-      attributes: itemAttrs
-    });
+  // If only 1 item extracted, merge global attributes from entire message
+  if (seenCanonical.size === 1) {
+    const [singleItem] = seenCanonical.values();
+    const globalAttrs = extractSegmentAttributes(rawMessage, domain);
+    singleItem.attributes = {
+      ...globalAttrs,
+      ...(singleItem.attributes || {})
+    };
   }
 
-  return { items: results, has_contradictory_quantity };
-}
-
-export function isMissingBlockingAttribute(items, domain) {
-  if (!items || items.length === 0) return false;
-
-  if (domain === 'baker') {
-    return items.every(item => !item.attributes || !item.attributes.flavour);
-  }
-
-  if (domain === 'electrician') {
-    return items.every(item => !item.attributes || !item.attributes.issue);
-  }
-
-  return false;
+  return {
+    items: Array.from(seenCanonical.values()),
+    has_contradictory_quantity
+  };
 }
